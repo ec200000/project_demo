@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_demo/screens/products_overview_screen.dart';
+import '../screens/products_overview_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/product.dart';

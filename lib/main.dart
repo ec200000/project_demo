@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:project_demo/screens/payment_screen.dart';
-import 'package:project_demo/screens/settings_screen.dart';
 import 'package:provider/provider.dart';
 
-import './providers/great_places.dart';
+import 'providers/great_places.dart';
 import 'providers/auth.dart';
 import 'providers/cart.dart';
 import 'providers/orders.dart';
 import 'providers/products.dart';
+
+import 'screens/payment_screen.dart';
+import 'screens/settings_screen.dart';
 import 'screens/category_screen.dart';
 import 'screens/auth_screen.dart';
 import 'screens/cart_screen.dart';

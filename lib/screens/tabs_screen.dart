@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:project_demo/providers/cart.dart';
-import 'package:project_demo/screens/payment_screen.dart';
-import 'package:project_demo/screens/settings_screen.dart';
-import 'package:project_demo/screens/splash_screen.dart';
-import 'package:project_demo/widgets/app_drawer.dart';
-import 'package:project_demo/widgets/badge.dart';
+import '../providers/cart.dart';
+import '../screens/payment_screen.dart';
+import '../screens/settings_screen.dart';
+import '../screens/splash_screen.dart';
+import '../widgets/app_drawer.dart';
+import '../widgets/badge.dart';
 import 'package:provider/provider.dart';
 
-import './categories_screen.dart';
+import '../screens/categories_screen.dart';
 import '../models/meal.dart';
-import 'cart_screen.dart';
+import '../screens/cart_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   static const routeName = '/tabs-screen';
