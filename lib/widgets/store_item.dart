@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_demo/screens/category_screen.dart';
+import '../screens/category_screen.dart';
 
 class StoreItem extends StatelessWidget {
   final String id;

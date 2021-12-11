@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../dummy_data.dart';
 import '../widgets/category_item.dart';
-import 'open_store_screen.dart';
+import '../screens/open_store_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   static const routeName = '/settings';
