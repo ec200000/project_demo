@@ -14,14 +14,14 @@ enum FilterOptions {
   All,
 }
 
-class ProductsOverviewScreen extends StatefulWidget {
-  static const routeName = '/products-view';
+class CategoryScreen extends StatefulWidget {
+  static const routeName = '/category';
 
   @override
-  _ProductsOverviewScreenState createState() => _ProductsOverviewScreenState();
+  _CategoryScreenState createState() => _CategoryScreenState();
 }
 
-class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
+class _CategoryScreenState extends State<CategoryScreen> {
   var _showOnlyFavorites = false;
   var _isInit = true;
   var _isLoading = false;
@@ -58,7 +58,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.transparent,
-        title: Text('My Products', style: TextStyle(color: Colors.black),),
+        title: Text('Category', style: TextStyle(color: Colors.black),),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
@@ -68,8 +68,8 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       ),
       body: _isLoading
           ? Center(
-              child: CircularProgressIndicator(),
-            )
+        child: CircularProgressIndicator(),
+      )
           : ProductsGrid(_showOnlyFavorites),
     );
   }

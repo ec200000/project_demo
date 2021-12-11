@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../dummy_data.dart';
 import '../widgets/category_item.dart';
+import 'open_store_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   static const routeName = '/settings';
@@ -11,34 +12,30 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsScreen> {
-  bool _dark;
+  bool _storeOwner;
 
   @override
   void initState() {
     super.initState();
-    _dark = false;
-  }
-
-  Brightness _getBrightness() {
-    return _dark ? Brightness.dark : Brightness.light;
+    _storeOwner = false;
   }
 
   @override
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData(
-        brightness: _getBrightness(),
+        brightness: Brightness.light,
       ),
       child: Scaffold(
-        backgroundColor: _dark ? null : Colors.grey.shade200,
+        backgroundColor: Colors.grey.shade200,
         appBar: AppBar(
           elevation: 0,
-          brightness: _getBrightness(),
-          iconTheme: IconThemeData(color: _dark ? Colors.white : Colors.black),
+          brightness: Brightness.light,
+          iconTheme: IconThemeData(color: Colors.black),
           backgroundColor: Colors.transparent,
           title: Text(
             'Settings',
-            style: TextStyle(color: _dark ? Colors.white : Colors.black),
+            style: TextStyle(color: Colors.black),
           ),
           actions: <Widget>[
           ],
@@ -86,21 +83,9 @@ class _SettingsPageState extends State<SettingsScreen> {
                       children: <Widget>[
                         ListTile(
                           leading: Icon(
-                            Icons.lock_outline,
+                            Icons.language,
                             color: Colors.purple,
                           ),
-                          title: Text("Change Password"),
-                          trailing: Icon(Icons.keyboard_arrow_right),
-                          onTap: () {
-                            //open change password
-                          },
-                        ),
-                        _buildDivider(),
-                        ListTile(
-                          // leading: Icon(
-                          //   FontAwesomeIcons.language,
-                          //   color: Colors.purple,
-                          // ),
                           title: Text("Change Language"),
                           trailing: Icon(Icons.keyboard_arrow_right),
                           onTap: () {
@@ -119,7 +104,41 @@ class _SettingsPageState extends State<SettingsScreen> {
                             //open change location
                           },
                         ),
+                        _buildDivider(),
+                        ListTile(
+                          leading: Icon(
+                            Icons.credit_card,
+                            color: Colors.purple,
+                          ),
+                          title: Text("Credit Cards"),
+                          trailing: Icon(Icons.keyboard_arrow_right),
+                          onTap: () {
+                            //open change language
+                          },
+                        ),
                       ],
+                    ),
+                  ),
+                  Card(
+                    elevation: 4.0,
+                    margin: const EdgeInsets.fromLTRB(32.0, 8.0, 32.0, 16.0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          leading: Icon(
+                            Icons.store,
+                            color: Colors.purple,
+                          ),
+                          title: !_storeOwner ? Text("Open Store") : Text("Edit Store"),
+                          trailing: Icon(Icons.keyboard_arrow_right),
+                          onTap: () {
+                            Navigator.of(context).pushNamed(OpenStoreScreen.routeName);
+                            //open change language
+                          },
+                        ),
+                      ]
                     ),
                   ),
                   const SizedBox(height: 20.0),
@@ -136,13 +155,6 @@ class _SettingsPageState extends State<SettingsScreen> {
                     contentPadding: const EdgeInsets.all(0),
                     value: true,
                     title: Text("Received notification"),
-                    onChanged: (val) {},
-                  ),
-                  SwitchListTile(
-                    activeColor: Colors.purple,
-                    contentPadding: const EdgeInsets.all(0),
-                    value: true,
-                    title: Text("Received Offer Notification"),
                     onChanged: (val) {},
                   ),
                   const SizedBox(height: 60.0),

@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/screens/payment_screen.dart';
 import 'package:project_demo/screens/settings_screen.dart';
 import 'package:provider/provider.dart';
 
 import './providers/great_places.dart';
-import './screens/places_list_screen.dart';
-import './screens/add_place_screen.dart';
-import './screens/place_detail_screen.dart';
 import 'providers/auth.dart';
 import 'providers/cart.dart';
 import 'providers/orders.dart';
 import 'providers/products.dart';
+import 'screens/category_screen.dart';
 import 'screens/auth_screen.dart';
 import 'screens/cart_screen.dart';
-import 'screens/category_meals_screen.dart';
 import 'screens/edit_product_screen.dart';
 import 'screens/filters_screen.dart';
 import 'screens/meal_detail_screen.dart';
-import 'screens/orders_screen.dart';
+import 'screens/open_store_screen.dart';
 import 'screens/product_detail_screen.dart';
 import 'screens/products_overview_screen.dart';
 import 'screens/splash_screen.dart';
@@ -81,12 +79,14 @@ class MyApp extends StatelessWidget {
             routes: {
               ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
               CartScreen.routeName: (ctx) => CartScreen(),
-              OrdersScreen.routeName: (ctx) => OrdersScreen(),
               UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
               EditProductScreen.routeName: (ctx) => EditProductScreen(),
-              CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+              CategoryScreen.routeName: (ctx) => CategoryScreen(),
               TabsScreen.routeName: (ctx) => TabsScreen(),
               SettingsScreen.routeName: (ctx) => SettingsScreen(),
+              PaymentScreen.routeName: (ctx) => PaymentScreen(),
+              OpenStoreScreen.routeName: (ctx) => OpenStoreScreen(),
+              ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),
             },
           ),
       ),

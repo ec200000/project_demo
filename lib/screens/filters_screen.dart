@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../widgets/main_drawer.dart';
+import 'package:project_demo/widgets/app_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/filters';
@@ -65,7 +64,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
           )
         ],
       ),
-      drawer: MainDrawer(),
+      drawer: AppDrawer(),
       body: Column(
         children: <Widget>[
           Container(

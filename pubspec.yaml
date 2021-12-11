@@ -34,8 +34,6 @@ dependencies:
   path_provider: ^1.1.0
   path: ^1.6.2
   sqflite: ^1.1.5
-  location: ^2.3.5
-  google_maps_flutter: ^0.5.17
   intl: ^0.15.8
   http: ^0.12.0+2
   shared_preferences: ^0.5.3+1
@@ -52,6 +50,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.9.0"
+
+flutter_icons:
+  image_path: "assets/icon/icon.png"
+  android: true
+  ios: true
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -76,6 +80,10 @@ flutter:
      - assets/icon/yroz2.png
      - assets/icon/yroz1.jpg
      - assets/icon/yroz3.png
+     - assets/icon/yroz4.png
+     - assets/icon/icon.png
+     - assets/images/food.png
+     - assets/images/home.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

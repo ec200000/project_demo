@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:project_demo/providers/cart.dart';
+import 'package:project_demo/screens/payment_screen.dart';
 import 'package:project_demo/screens/settings_screen.dart';
+import 'package:project_demo/screens/splash_screen.dart';
+import 'package:project_demo/widgets/app_drawer.dart';
 import 'package:project_demo/widgets/badge.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets/main_drawer.dart';
-import './favorites_screen.dart';
 import './categories_screen.dart';
 import '../models/meal.dart';
 import 'cart_screen.dart';
@@ -26,19 +27,19 @@ class _TabsScreenState extends State<TabsScreen> {
     _pages = [
       {
         'page': CategoriesScreen(),
-        'title': 'Categories',
+        'title': 'Home',
       },
       {
-        'page': FavoritesScreen(),
+        'page': SplashScreen(),
         'title': 'Your Favorite',
       },
       {
-        'page': FavoritesScreen(),
-        'title': 'Your Favorite',
+        'page': SplashScreen(),
+        'title': 'Locations',
       },
       {
-        'page': FavoritesScreen(),
-        'title': 'Your Favorite',
+        'page': SplashScreen(),
+        'title': 'Payment',
       },
     ];
     super.initState();
@@ -85,13 +86,14 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
         ],
       ),
-      drawer: MainDrawer(),
+      drawer: AppDrawer(),
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         backgroundColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.white,
-        selectedItemColor: Theme.of(context).accentColor,
+        selectedItemColor: Colors.black,
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         currentIndex: _selectedPageIndex,
         // type: BottomNavigationBarType.fixed,
         items: [
