@@ -135,10 +135,10 @@ class _OpenStoreScreenState extends State<OpenStoreScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.transparent,
-        title: Text('Open Store', style: TextStyle(color: Colors.black),),
+        // elevation: 0,
+        // iconTheme: IconThemeData(color: Colors.black),
+        // backgroundColor: Colors.transparent,
+        title: Text('Open Store', ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.save),

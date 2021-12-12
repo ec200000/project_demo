@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/screens/store_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/great_places.dart';
@@ -14,7 +15,6 @@ import 'screens/auth_screen.dart';
 import 'screens/cart_screen.dart';
 import 'screens/edit_product_screen.dart';
 import 'screens/filters_screen.dart';
-import 'screens/meal_detail_screen.dart';
 import 'screens/open_store_screen.dart';
 import 'screens/product_detail_screen.dart';
 import 'screens/products_overview_screen.dart';
@@ -88,6 +88,7 @@ class MyApp extends StatelessWidget {
               PaymentScreen.routeName: (ctx) => PaymentScreen(),
               OpenStoreScreen.routeName: (ctx) => OpenStoreScreen(),
               ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),
+              StoreScreen.routeName: (ctx) => StoreScreen(),
             },
           ),
       ),

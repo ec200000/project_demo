@@ -13,7 +13,7 @@ class CategoriesScreen extends StatelessWidget {
           Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.only(left: 15.0),
+                padding: const EdgeInsets.only(left: 15.0, top: 10.0),
                 child: Text("Categories", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
               ),
           ),
@@ -51,11 +51,11 @@ class CategoriesScreen extends StatelessWidget {
             child: GridView(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(25),
-              children: [DUMMY_CATEGORIES.map(
-                    (catData) => StoreItem(
-                  catData.id,
-                  catData.title,
-                  catData.color,
+              children: [DUMMY_STORES.map(
+                    (storeData) => StoreItem(
+                      storeData.id,
+                      storeData.title,
+                      storeData.address,
                 ),
               ).toList()
                 ,].expand((i) => i).toList(),

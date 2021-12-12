@@ -13,7 +13,6 @@ class CategoryItem extends StatelessWidget {
     Navigator.of(ctx).pushNamed(
       CategoryScreen.routeName,
       arguments: {
-        'id': id,
         'title': title,
       },
     );

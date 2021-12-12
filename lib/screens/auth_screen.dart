@@ -82,11 +82,6 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
     _heightAnimation.addListener(() => setState((){}));
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-  }
-
   void _showErrorDialog(String message) {
     showDialog(
       context: context,
@@ -127,7 +122,7 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                Image.asset('assets/icon/yroz4.png'),
+                Image.asset('assets/icon/yroz5.png'),
                 if (_isLoading)
                   CircularProgressIndicator()
                 else

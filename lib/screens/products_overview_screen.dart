@@ -55,10 +55,10 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.transparent,
-        title: Text('My Products', style: TextStyle(color: Colors.black),),
+        // elevation: 0,
+        // iconTheme: IconThemeData(color: Colors.black),
+        // backgroundColor: Colors.transparent,
+        title: Text('My Products',),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),

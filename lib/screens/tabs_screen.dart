@@ -55,13 +55,13 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_pages[_selectedPageIndex]['title'], style: TextStyle(color: Colors.black),),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        title: Text(_pages[_selectedPageIndex]['title'],),
+        //backgroundColor: Colors.transparent,
+        //elevation: 0,
+        //iconTheme: IconThemeData(color: Colors.black),
         actions: [
           IconButton(
-            color: Colors.black,
+            //color: Colors.black,
             icon: Icon(
               Icons.settings_outlined,
             ),
@@ -75,7 +75,7 @@ class _TabsScreenState extends State<TabsScreen> {
               value: cart.itemCount.toString(),
             ),
             child: IconButton(
-              color: Colors.black,
+              //color: Colors.black,
               icon: Icon(
                 Icons.shopping_cart,
               ),
@@ -89,10 +89,12 @@ class _TabsScreenState extends State<TabsScreen> {
       drawer: AppDrawer(),
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         onTap: _selectPage,
-        backgroundColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.black,
+        backgroundColor: Colors.white,
+        //fixedColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Theme.of(context).primaryColor,
         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         currentIndex: _selectedPageIndex,
         // type: BottomNavigationBarType.fixed,

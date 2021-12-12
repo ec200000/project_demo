@@ -22,21 +22,13 @@ class _SettingsPageState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData(
-        brightness: Brightness.light,
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.grey.shade200,
+    return Scaffold(
         appBar: AppBar(
-          elevation: 0,
-          brightness: Brightness.light,
-          iconTheme: IconThemeData(color: Colors.black),
-          backgroundColor: Colors.transparent,
-          title: Text(
-            'Settings',
-            style: TextStyle(color: Colors.black),
-          ),
+          // elevation: 0,
+          // brightness: Brightness.light,
+          // iconTheme: IconThemeData(color: Colors.black),
+          // backgroundColor: Colors.transparent,
+          title: Text('Settings',),
           actions: <Widget>[
           ],
         ),
@@ -50,26 +42,30 @@ class _SettingsPageState extends State<SettingsScreen> {
                 children: <Widget>[
                   Card(
                     elevation: 8.0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                    color: Colors.purple,
-                    child: ListTile(
-                      onTap: () {
-                        //open edit profile
-                      },
-                      title: Text(
-                        "John Doe",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
+                    child: Container(
+                      height: 80,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: ListTile(
+                          onTap: () {
+                            //open edit profile
+                          },
+                          title: Text(
+                            "John Doe",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          leading: CircleAvatar(
+                            radius: 30.0,
+                            backgroundImage: Image.asset('assets/icon/yroz3.png').image,
+                          ),
+                          trailing: Icon(
+                            Icons.edit,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                      leading: CircleAvatar(
-                        backgroundImage: Image.asset('assets/icon/yroz3.png').image,
-                      ),
-                      trailing: Icon(
-                        Icons.edit,
-                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -163,7 +159,6 @@ class _SettingsPageState extends State<SettingsScreen> {
             ),
           ],
         ),
-      ),
     );
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/credit_card.dart';
 import '../screens/edit_product_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,8 @@ enum FilterOptions {
 
 class CategoryScreen extends StatefulWidget {
   static const routeName = '/category';
+
+  String title;
 
   @override
   _CategoryScreenState createState() => _CategoryScreenState();
@@ -37,6 +40,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   void didChangeDependencies() {
+    final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
+    widget.title = routeArgs['title'];
     if (_isInit) {
       setState(() {
         _isLoading = false;
@@ -55,22 +60,22 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.transparent,
-        title: Text('Category', style: TextStyle(color: Colors.black),),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: (){ Navigator.of(context).pushNamed(EditProductScreen.routeName); },
-          ),
-        ],
+        // elevation: 0,
+        // iconTheme: IconThemeData(color: Colors.black),
+        // backgroundColor: Colors.transparent,
+        title: Text(widget.title, ),
       ),
       body: _isLoading
           ? Center(
         child: CircularProgressIndicator(),
       )
-          : ProductsGrid(_showOnlyFavorites),
+          : Column(
+            children: [
+              CreditCardWidget(),
+              CreditCardWidget(),
+              CreditCardWidget(),
+            ],
+          ),
     );
   }
 }

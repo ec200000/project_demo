@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/screens/store_screen.dart';
 import '../screens/category_screen.dart';
 
 class StoreItem extends StatelessWidget {
   final String id;
   final String title;
-  final Color color;
+  final String address;
 
-  StoreItem(this.id, this.title, this.color);
+  StoreItem(this.id, this.title, this.address);
 
-  void selectCategory(BuildContext ctx) {
+  void selectStore(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      CategoryScreen.routeName,
+      StoreScreen.routeName,
       arguments: {
-        'id': id,
         'title': title,
+        'address': address,
+        'image': this.title == 'Chocolate' ? "assets/images/shop1.png" : "assets/images/shop2.png",
       },
     );
   }
@@ -29,7 +31,7 @@ class StoreItem extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.black,
                         image: DecorationImage(
-                            image: this.title == 'Food' ? AssetImage("assets/images/food.png") : AssetImage("assets/images/home.png"),
+                            image: this.title == 'Chocolate' ? AssetImage("assets/images/shop1.png") : AssetImage("assets/images/shop2.png"),
                             fit: BoxFit.cover
                         ),
                         borderRadius: BorderRadius.circular(15),
@@ -46,13 +48,18 @@ class StoreItem extends StatelessWidget {
                         ),
                         color : Color.fromRGBO(255, 255, 255, 1),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 88, vertical: 10),
                       child: Column(
                         children: <Widget>[
                           Text(this.title, textAlign: TextAlign.start, style: TextStyle(
                             color: Color.fromRGBO(20, 19, 42, 1),
                             fontSize: 14,
+                            ),
                           ),
+                          Text(this.address, textAlign: TextAlign.start, style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 10,
+                            ),
                           ),
                         ],
                       ),
@@ -61,7 +68,7 @@ class StoreItem extends StatelessWidget {
               ]
           )
       ),
-      onTap:() => selectCategory(context),
+      onTap:() => selectStore(context),
     );
   }
 }
