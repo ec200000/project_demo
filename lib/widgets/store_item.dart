@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_demo/screens/store_screen.dart';
+import 'package:project_demo/screens/physical_store_screen.dart';
 import '../screens/category_screen.dart';
 
 class StoreItem extends StatelessWidget {
@@ -11,7 +11,7 @@ class StoreItem extends StatelessWidget {
 
   void selectStore(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      StoreScreen.routeName,
+      PhysicalStoreScreen.routeName,
       arguments: {
         'title': title,
         'address': address,

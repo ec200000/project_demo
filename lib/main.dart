@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_demo/screens/store_screen.dart';
+import 'package:project_demo/blocs/application_bloc.dart';
+import 'package:project_demo/screens/online_store_screen.dart';
+import 'package:project_demo/screens/physical_store_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/great_places.dart';
@@ -59,6 +61,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: GreatPlaces(),
         ),
+        ChangeNotifierProvider(
+            create: (context) => ApplicationBloc(),
+        ),
       ],
       child: Consumer<Auth>(
           builder: (ctx, auth, _) => MaterialApp(
@@ -88,7 +93,8 @@ class MyApp extends StatelessWidget {
               PaymentScreen.routeName: (ctx) => PaymentScreen(),
               OpenStoreScreen.routeName: (ctx) => OpenStoreScreen(),
               ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),
-              StoreScreen.routeName: (ctx) => StoreScreen(),
+              PhysicalStoreScreen.routeName: (ctx) => PhysicalStoreScreen(),
+              OnlineStoreScreen.routeName: (ctx) => OnlineStoreScreen(),
             },
           ),
       ),

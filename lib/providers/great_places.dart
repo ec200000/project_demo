@@ -7,13 +7,13 @@ import '../helpers/db_helper.dart';
 import '../helpers/location_helper.dart';
 
 class GreatPlaces with ChangeNotifier {
-  List<Place> _items = [];
+  List<Place2> _items = [];
 
-  List<Place> get items {
+  List<Place2> get items {
     return [..._items];
   }
 
-  Place findById(String id) {
+  Place2 findById(String id) {
     return _items.firstWhere((place) => place.id == id);
   }
 
@@ -29,7 +29,7 @@ class GreatPlaces with ChangeNotifier {
       longitude: pickedLocation.longitude,
       address: address,
     );
-    final newPlace = Place(
+    final newPlace = Place2(
       id: DateTime.now().toString(),
       image: pickedImage,
       title: pickedTitle,
@@ -51,7 +51,7 @@ class GreatPlaces with ChangeNotifier {
     final dataList = await DBHelper.getData('user_places');
     _items = dataList
         .map(
-          (item) => Place(
+          (item) => Place2(
                 id: item['id'],
                 title: item['title'],
                 image: File(item['image']),

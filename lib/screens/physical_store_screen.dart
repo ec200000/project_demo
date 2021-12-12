@@ -9,18 +9,18 @@ import '../providers/cart.dart';
 import './cart_screen.dart';
 import '../providers/products.dart';
 
-class StoreScreen extends StatefulWidget {
-  static const routeName = '/store';
+class PhysicalStoreScreen extends StatefulWidget {
+  static const routeName = '/physical-store';
 
   String title;
   String address;
   String image;
 
   @override
-  _StoreScreenState createState() => _StoreScreenState();
+  _PhysicalStoreScreenState createState() => _PhysicalStoreScreenState();
 }
 
-class _StoreScreenState extends State<StoreScreen> {
+class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
 
   @override
   void initState() {

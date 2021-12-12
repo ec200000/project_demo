@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/screens/map_screen.dart';
 import '../providers/cart.dart';
 import '../screens/payment_screen.dart';
 import '../screens/settings_screen.dart';
@@ -31,15 +32,15 @@ class _TabsScreenState extends State<TabsScreen> {
       },
       {
         'page': SplashScreen(),
-        'title': 'Your Favorite',
+        'title': 'Your Favorites',
       },
       {
-        'page': SplashScreen(),
+        'page': MapScreen(),
         'title': 'Locations',
       },
       {
         'page': SplashScreen(),
-        'title': 'Payment',
+        'title': 'Wallet',
       },
     ];
     super.initState();
