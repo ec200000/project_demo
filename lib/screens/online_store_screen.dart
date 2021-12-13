@@ -101,6 +101,12 @@ class _OnlineStoreScreenState extends State<OnlineStoreScreen> {
                 //open change language
               },
             ),
+            ListTile(
+              title: Text("Products", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+              onTap: () {
+                //open change language
+              },
+            ),
             ProductsGrid(false),
           ],
         ),

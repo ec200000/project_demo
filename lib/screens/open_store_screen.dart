@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:project_demo/widgets/image_input.dart';
 import '../screens/products_overview_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +21,7 @@ class _OpenStoreScreenState extends State<OpenStoreScreen> {
   final _imageUrlController = TextEditingController();
   final _imageUrlFocusNode = FocusNode();
   final _form = GlobalKey<FormState>();
+  File _pickedImage;
   var _editedProduct = Product(
     id: null,
     title: '',
@@ -82,6 +86,20 @@ class _OpenStoreScreenState extends State<OpenStoreScreen> {
       }
       setState(() {});
     }
+  }
+
+  void _selectImage(File pickedImage) {
+    _pickedImage = pickedImage;
+    setState(() {
+
+    });
+  }
+
+  void _unselectImage() {
+    _pickedImage = null;
+    setState(() {
+
+    });
   }
 
   Future<void> _saveForm() async {
@@ -231,7 +249,7 @@ class _OpenStoreScreenState extends State<OpenStoreScreen> {
                   );
                 },
               ),
-              Row(
+              _pickedImage == null ? Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   Container(
@@ -294,7 +312,8 @@ class _OpenStoreScreenState extends State<OpenStoreScreen> {
                     ),
                   ),
                 ],
-              ),
+              ) : const SizedBox(height: 1.0),
+              ImageInput(_selectImage, _unselectImage),
               const SizedBox(height: 50.0),
               RaisedButton(
                 color: Theme.of(context).primaryColor,

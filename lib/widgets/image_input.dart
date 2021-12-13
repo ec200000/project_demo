@@ -8,7 +8,9 @@ import 'package:path_provider/path_provider.dart' as syspaths;
 class ImageInput extends StatefulWidget {
   final Function onSelectImage;
 
-  ImageInput(this.onSelectImage);
+  final Function onUnselectImage;
+
+  ImageInput(this.onSelectImage, this.onUnselectImage);
 
   @override
   _ImageInputState createState() => _ImageInputState();
@@ -32,6 +34,13 @@ class _ImageInputState extends State<ImageInput> {
     final fileName = path.basename(imageFile.path);
     final savedImage = await imageFile.copy('${appDir.path}/$fileName');
     widget.onSelectImage(savedImage);
+  }
+
+  Future<void> _cancelPicture() async {
+    setState(() {
+      _storedImage = null;
+    });
+    widget.onUnselectImage();
   }
 
   @override
@@ -59,14 +68,22 @@ class _ImageInputState extends State<ImageInput> {
         SizedBox(
           width: 10,
         ),
-        Expanded(
-          child: FlatButton.icon(
-            icon: Icon(Icons.camera),
-            label: Text('Take Picture'),
-            textColor: Theme.of(context).primaryColor,
-            onPressed: _takePicture,
-          ),
-        ),
+        Column(
+          children: [
+            FlatButton.icon(
+              icon: Icon(Icons.camera),
+              label: Text('Take Picture'),
+              textColor: Theme.of(context).primaryColor,
+              onPressed: _takePicture,
+            ),
+            FlatButton.icon(
+              icon: Icon(Icons.cancel),
+              label: Text('Cancel Picture'),
+              textColor: Theme.of(context).primaryColor,
+              onPressed: _cancelPicture,
+            ),
+          ],
+        )
       ],
     );
   }
