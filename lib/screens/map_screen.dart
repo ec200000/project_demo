@@ -62,7 +62,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     final applicationBloc = Provider.of<ApplicationBloc>(context);
     return Scaffold(
-        body: SingleChildScrollView(
+        body: applicationBloc.currentLocation == null ? SplashScreen() : SingleChildScrollView(
           child: Column(
             children: [
               Padding(
@@ -82,7 +82,7 @@ class _MapScreenState extends State<MapScreen> {
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height - 200,
-                    child: applicationBloc.currentLocation == null ? SplashScreen() : GoogleMap(
+                    child: GoogleMap(
                       mapType: MapType.normal,
                       myLocationEnabled: true,
                       initialCameraPosition: CameraPosition(
