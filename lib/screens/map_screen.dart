@@ -65,122 +65,124 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     final applicationBloc = Provider.of<ApplicationBloc>(context);
     return Scaffold(
-        body: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                controller: _locationController,
-                textCapitalization: TextCapitalization.words,
-                decoration: InputDecoration(
-                  hintText: 'Search by City',
-                  suffixIcon: Icon(Icons.search),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: _locationController,
+                  textCapitalization: TextCapitalization.words,
+                  decoration: InputDecoration(
+                    hintText: 'Search',
+                    suffixIcon: Icon(Icons.search),
+                  ),
+                  onChanged: (value) => applicationBloc.searchPlaces(value),
+                  onTap: () => applicationBloc.clearSelectedLocation(),
                 ),
-                onChanged: (value) => applicationBloc.searchPlaces(value),
-                onTap: () => applicationBloc.clearSelectedLocation(),
               ),
-            ),
-            Stack(
-              children: [
-                Container(
-                  height: 600.0,
-                  child: GoogleMap(
-                    mapType: MapType.normal,
-                    myLocationEnabled: true,
-                    initialCameraPosition: CameraPosition(
-                      target: LatLng(
-                          applicationBloc.currentLocation.latitude,
-                          applicationBloc.currentLocation.longitude),
-                      zoom: 14,
-                    ),
-                    onMapCreated: (GoogleMapController controller) {
-                      _mapController.complete(controller);
-                    },
-                    markers: Set<Marker>.of(applicationBloc.markers),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Wrap(
-                    spacing: 8.0,
-                    children: [
-                      FilterChip(
-                        label: Text('Campground'),
-                        onSelected: (val) => applicationBloc.togglePlaceType(
-                            'campground', val),
-                        selected:
-                        applicationBloc.placeType  =='campground',
-                        selectedColor: Colors.blue,
+              Stack(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height - 200,
+                    child: GoogleMap(
+                      mapType: MapType.normal,
+                      myLocationEnabled: true,
+                      initialCameraPosition: CameraPosition(
+                        target: LatLng(
+                            applicationBloc.currentLocation.latitude,
+                            applicationBloc.currentLocation.longitude),
+                        zoom: 14,
                       ),
-                      FilterChip(
-                          label: Text('Locksmith'),
-                          onSelected: (val) => applicationBloc
-                              .togglePlaceType('locksmith', val),
-                          selected: applicationBloc.placeType  =='locksmith',
-                          selectedColor: Colors.blue),
-                      FilterChip(
-                          label: Text('Pharmacy'),
-                          onSelected: (val) => applicationBloc
-                              .togglePlaceType('pharmacy', val),
-                          selected:
-                          applicationBloc.placeType  =='pharmacy',
-                          selectedColor: Colors.blue),
-                      FilterChip(
-                          label: Text('Pet Store'),
-                          onSelected: (val) => applicationBloc
-                              .togglePlaceType('pet_store', val),
-                          selected: applicationBloc.placeType  =='pet_store',
-                          selectedColor: Colors.blue),
-                      FilterChip(
-                          label: Text('Lawyer'),
-                          onSelected: (val) =>
-                              applicationBloc
-                                  .togglePlaceType('lawyer', val),
-                          selected:
-                          applicationBloc.placeType  =='lawyer',
-                          selectedColor: Colors.blue),
-                      FilterChip(
-                          label: Text('Bank'),
-                          onSelected: (val) =>
-                              applicationBloc
-                                  .togglePlaceType('bank', val),
-                          selected:
-                          applicationBloc.placeType  =='bank',
-                          selectedColor: Colors.blue),
-                    ],
+                      onMapCreated: (GoogleMapController controller) {
+                        _mapController.complete(controller);
+                      },
+                      markers: Set<Marker>.of(applicationBloc.markers),
+                    ),
                   ),
-                ),
-                if (applicationBloc.searchResults != null &&
-                    applicationBloc.searchResults.length != 0)
-                  Container(
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Wrap(
+                      spacing: 8.0,
+                      children: [
+                        FilterChip(
+                          label: Text('Campground'),
+                          onSelected: (val) => applicationBloc.togglePlaceType(
+                              'campground', val),
+                          selected:
+                          applicationBloc.placeType  =='campground',
+                          selectedColor: Colors.blue,
+                        ),
+                        FilterChip(
+                            label: Text('Locksmith'),
+                            onSelected: (val) => applicationBloc
+                                .togglePlaceType('locksmith', val),
+                            selected: applicationBloc.placeType  =='locksmith',
+                            selectedColor: Colors.blue),
+                        FilterChip(
+                            label: Text('Pharmacy'),
+                            onSelected: (val) => applicationBloc
+                                .togglePlaceType('pharmacy', val),
+                            selected:
+                            applicationBloc.placeType  =='pharmacy',
+                            selectedColor: Colors.blue),
+                        FilterChip(
+                            label: Text('Pet Store'),
+                            onSelected: (val) => applicationBloc
+                                .togglePlaceType('pet_store', val),
+                            selected: applicationBloc.placeType  =='pet_store',
+                            selectedColor: Colors.blue),
+                        FilterChip(
+                            label: Text('Lawyer'),
+                            onSelected: (val) =>
+                                applicationBloc
+                                    .togglePlaceType('lawyer', val),
+                            selected:
+                            applicationBloc.placeType  =='lawyer',
+                            selectedColor: Colors.blue),
+                        FilterChip(
+                            label: Text('Bank'),
+                            onSelected: (val) =>
+                                applicationBloc
+                                    .togglePlaceType('bank', val),
+                            selected:
+                            applicationBloc.placeType  =='bank',
+                            selectedColor: Colors.blue),
+                      ],
+                    ),
+                  ),
+                  if (applicationBloc.searchResults != null &&
+                      applicationBloc.searchResults.length != 0)
+                    Container(
+                        height: 300.0,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(.6),
+                            backgroundBlendMode: BlendMode.darken)),
+                  if (applicationBloc.searchResults != null)
+                    Container(
                       height: 300.0,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(.6),
-                          backgroundBlendMode: BlendMode.darken)),
-                if (applicationBloc.searchResults != null)
-                  Container(
-                    height: 300.0,
-                    child: ListView.builder(
-                        itemCount: applicationBloc.searchResults.length,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            title: Text(
-                              applicationBloc
-                                  .searchResults[index].description,
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            onTap: () {
-                              applicationBloc.setSelectedLocation(
-                                  applicationBloc
-                                      .searchResults[index].placeId);
-                            },
-                          );
-                        }),
-                  ),
-              ],
-            ),
-          ],
+                      child: ListView.builder(
+                          itemCount: applicationBloc.searchResults.length,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              title: Text(
+                                applicationBloc
+                                    .searchResults[index].description,
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              onTap: () {
+                                applicationBloc.setSelectedLocation(
+                                    applicationBloc
+                                        .searchResults[index].placeId);
+                              },
+                            );
+                          }),
+                    ),
+                ],
+              ),
+            ],
+          ),
         ));
   }
 
