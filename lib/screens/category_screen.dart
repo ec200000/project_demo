@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/widgets/store_item.dart';
+import '../dummy_data.dart';
 import '../widgets/credit_card.dart';
 import '../screens/edit_product_screen.dart';
 import 'package:provider/provider.dart';
@@ -69,13 +71,24 @@ class _CategoryScreenState extends State<CategoryScreen> {
           ? Center(
         child: CircularProgressIndicator(),
       )
-          : Column(
-            children: [
-              CreditCardWidget(),
-              CreditCardWidget(),
-              CreditCardWidget(),
-            ],
+          : GridView(
+        scrollDirection: Axis.vertical,
+        padding: const EdgeInsets.all(25),
+        children: [DUMMY_STORES.map(
+              (storeData) => StoreItem(
+            storeData.id,
+            storeData.title,
+            storeData.address,
           ),
+        ).toList()
+          ,].expand((i) => i).toList(),
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200,
+          childAspectRatio: 3 / 2,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+        ),
+      ),
     );
   }
 }
