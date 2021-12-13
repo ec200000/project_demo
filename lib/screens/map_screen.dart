@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:project_demo/screens/splash_screen.dart';
 import '../blocs/application_bloc.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +32,6 @@ class _MapScreenState extends State<MapScreen> {
     final applicationBloc =
     Provider.of<ApplicationBloc>(context, listen: false);
 
-
     //Listen for selected Location
     locationSubscription = applicationBloc.selectedLocation.stream.listen((place) {
       if (place != null) {
@@ -48,12 +48,9 @@ class _MapScreenState extends State<MapScreen> {
     super.initState();
   }
 
-
-
   @override
   void dispose() {
-    final applicationBloc =
-    Provider.of<ApplicationBloc>(context, listen: false);
+    final applicationBloc = Provider.of<ApplicationBloc>(context, listen: false);
     applicationBloc.dispose();
     _locationController.dispose();
     locationSubscription.cancel();
@@ -85,7 +82,7 @@ class _MapScreenState extends State<MapScreen> {
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height - 200,
-                    child: GoogleMap(
+                    child: applicationBloc.currentLocation == null ? SplashScreen() : GoogleMap(
                       mapType: MapType.normal,
                       myLocationEnabled: true,
                       initialCameraPosition: CameraPosition(
