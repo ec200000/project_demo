@@ -29,19 +29,22 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  provider: ^4.3.3
-  image_picker: ^0.6.0+9
+  provider: ^5.0.0
+  amplify_flutter: ^0.2.10
+  amplify_auth_cognito: ^0.2.10
+  font_awesome_flutter: ^9.0.0
+  image_picker: ^0.8.4+4
   path_provider: ^1.1.0
   path: ^1.6.2
   sqflite: ^1.1.5
   intl: ^0.15.8
-  http: ^0.12.2
+  http: ^0.13.4
   shared_preferences: ^0.5.3+1
   animated_splash_screen: ^1.1.0
   flutter_signin_button: ^2.0.0
   google_sign_in: ^5.2.1
-  google_maps_flutter: ^1.2.0
-  geolocator: ^6.2.0
+  google_maps_flutter: ^2.1.1
+  geolocator: ^8.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -95,6 +98,8 @@ flutter:
      - assets/images/nfc1.png
      - assets/images/visa.png
      - assets/images/visa1.png
+     - assets/images/facebook-logo.png
+     - assets/images/google-logo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
