@@ -1,9 +1,13 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_flutter/amplify.dart';
 import 'package:flutter/material.dart';
 import 'package:project_demo/blocs/application_bloc.dart';
 import 'package:project_demo/screens/online_store_screen.dart';
 import 'package:project_demo/screens/physical_store_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'amplifyconfiguration.dart';
+import 'models/app_user.dart';
 import 'providers/great_places.dart';
 import 'providers/auth.dart';
 import 'providers/cart.dart';
@@ -26,7 +30,41 @@ import 'screens/user_products_screen.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool _amplifyConfigured = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _configureAmplify();
+  }
+
+  void _configureAmplify() async {
+    if (!mounted) return;
+
+    Amplify.addPlugin(AmplifyAuthCognito());
+
+    // Amplify can only be configured once.
+    try {
+      await Amplify.configure(amplifyconfig);
+    } on AmplifyAlreadyConfiguredException {
+      print("Amplify was already configured. Was the app restarted?");
+    }
+    try {
+      setState(() {
+        _amplifyConfigured = true;
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+
   Map<int, Color> color =
   {
     50:Color.fromRGBO(243, 90, 106, .1),
@@ -40,6 +78,7 @@ class MyApp extends StatelessWidget {
     800:Color.fromRGBO(243, 90, 106, .9),
     900:Color.fromRGBO(243, 90, 106, 1),
   };
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -63,6 +102,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
             create: (context) => ApplicationBloc(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AppUser(),
         ),
       ],
       child: Consumer<Auth>(

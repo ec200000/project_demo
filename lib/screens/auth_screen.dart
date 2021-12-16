@@ -1,7 +1,9 @@
 import 'dart:math';
 
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:project_demo/models/app_user.dart';
 import '../screens/tabs_screen.dart';
 import '../models/http_exception.dart';
 import '../providers/auth.dart';
@@ -131,17 +133,13 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
                       SignInButton(
                         Buttons.Google,
                         onPressed: () {
-                          Navigator.of(context).pushNamed(
-                              TabsScreen.routeName,
-                          );
+                          context.read<AppUser>().signIn(AuthProvider.google);
                         },
                       ),
                       SignInButton(
                         Buttons.FacebookNew,
                         onPressed: () {
-                          Navigator.of(context).pushNamed(
-                            TabsScreen.routeName,
-                          );
+                          context.read<AppUser>().signIn(AuthProvider.facebook);
                         },
                       ),
                     ],
