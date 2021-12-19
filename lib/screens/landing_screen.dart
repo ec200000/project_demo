@@ -5,6 +5,8 @@ import '../models/app_user.dart';
 import 'package:provider/provider.dart';
 
 class LandingScreen extends StatelessWidget {
+  static const routeName = '/landing';
+
   @override
   Widget build(BuildContext context) {
     final appUser = context.watch<AppUser>().isSignedIn;

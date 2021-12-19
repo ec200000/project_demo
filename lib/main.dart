@@ -14,6 +14,7 @@ import 'providers/cart.dart';
 import 'providers/orders.dart';
 import 'providers/products.dart';
 
+import 'screens/landing_screen.dart';
 import 'screens/payment_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/category_screen.dart';
@@ -122,7 +123,7 @@ class _MyAppState extends State<MyApp> {
               authResultSnapshot.connectionState ==
                   ConnectionState.waiting
                   ? SplashScreen()
-                  : AuthScreen(),
+                  : LandingScreen(),
             ),
             routes: {
               ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
@@ -137,6 +138,7 @@ class _MyAppState extends State<MyApp> {
               ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),
               PhysicalStoreScreen.routeName: (ctx) => PhysicalStoreScreen(),
               OnlineStoreScreen.routeName: (ctx) => OnlineStoreScreen(),
+              LandingScreen.routeName: (ctx) => LandingScreen(),
             },
           ),
       ),

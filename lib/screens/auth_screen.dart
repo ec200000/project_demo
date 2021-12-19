@@ -133,13 +133,13 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
                       SignInButton(
                         Buttons.Google,
                         onPressed: () {
-                          context.read<AppUser>().signIn(AuthProvider.google);
+                          context.read<AppUser>().signIn(AuthProvider.google, context);
                         },
                       ),
                       SignInButton(
                         Buttons.FacebookNew,
                         onPressed: () {
-                          context.read<AppUser>().signIn(AuthProvider.facebook);
+                          context.read<AppUser>().signIn(AuthProvider.facebook, context);
                         },
                       ),
                     ],
