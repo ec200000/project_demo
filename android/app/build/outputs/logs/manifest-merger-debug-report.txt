@@ -15,11 +15,11 @@ MERGED from [:geolocator_android] C:\Users\Lenovo\IdeaProjects\project_demo\buil
 MERGED from [:shared_preferences] C:\Users\Lenovo\IdeaProjects\project_demo\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:sqflite] C:\Users\Lenovo\IdeaProjects\project_demo\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider] C:\Users\Lenovo\IdeaProjects\project_demo\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:google_sign_in] C:\Users\Lenovo\IdeaProjects\project_demo\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\0f85ce0ae800da7d8168611275a6ab90\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.amplifyframework:aws-auth-cognito:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\df79f991f8bea5fffd2bb58eb80dd1ea\jetified-aws-auth-cognito-1.28.3-rc\AndroidManifest.xml:16:1-24:12
-MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:16:1-32:12
 MERGED from [com.amazonaws:aws-android-sdk-cognitoauth:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\cfab035656413b43476b84161bcec476\jetified-aws-android-sdk-cognitoauth-2.34.0\AndroidManifest.xml:2:1-19:12
+MERGED from [androidx.browser:browser:1.2.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\461447694282fe4b28d6766cd69fae12\browser-1.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:16:1-32:12
 MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\e3c0d797b981e1a2214577b0f29d3ada\jetified-aws-android-sdk-mobile-client-2.34.0\AndroidManifest.xml:2:1-20:12
 MERGED from [com.amazonaws:aws-android-sdk-auth-core:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\9e7784d772f42fecdea92b4da1924305\jetified-aws-android-sdk-auth-core-2.34.0\AndroidManifest.xml:2:1-10:12
 MERGED from [com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\ad08a0b6a55003741f3a5f7a65efe774\jetified-aws-android-sdk-cognitoidentityprovider-2.34.0\AndroidManifest.xml:2:1-10:12
@@ -40,9 +40,6 @@ MERGED from [androidx.transition:transition:1.3.0] C:\Users\Lenovo\.gradle\cache
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\647215dad2189bf7ccc8bedb88622434\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\54bfc5b629ab063b236b358a8da4bd9c\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\2d547673e05a0f4359ea410021e8e7c2\jetified-play-services-maps-17.0.0\AndroidManifest.xml:17:1-38:12
-MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:17:1-39:12
-MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\030cfff4768389878ec520e38d5ccb73\jetified-play-services-auth-api-phone-16.0.0\AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\1de094fdcc6a14961fad7f668e23f0d7\jetified-play-services-auth-base-16.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\af7ff4cdb9585a03f0fe804445629944\jetified-play-services-base-17.0.0\AndroidManifest.xml:17:1-29:12
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\fe7ad5c5f8622be9f18d8f564c1bbb7e\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\81ec65fe9c26b4c9a52779021a5107ed\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:2:1-9:12
@@ -60,7 +57,6 @@ MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\Lenovo
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\033c795406e41888727686d5fd780672\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\ab7115890f56e160693dd724b387ceaf\customview-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\47185ad723d232e6208c03e6fdcb34a4\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.browser:browser:1.2.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\461447694282fe4b28d6766cd69fae12\browser-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\f2d63b2c28ee1d548ef27f10c2385caa\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\9c1469f5a2ad2b4764c3c283cf3fcf11\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\9bda4bd38cbbd129d40467c328b01419\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -135,10 +131,10 @@ application
 ADDED from C:\Users\Lenovo\IdeaProjects\project_demo\android\app\src\main\AndroidManifest.xml:13:4-64:19
 MERGED from [:image_picker] C:\Users\Lenovo\IdeaProjects\project_demo\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [:image_picker] C:\Users\Lenovo\IdeaProjects\project_demo\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
-MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:26:5-30:19
-MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:26:5-30:19
 MERGED from [com.amazonaws:aws-android-sdk-cognitoauth:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\cfab035656413b43476b84161bcec476\jetified-aws-android-sdk-cognitoauth-2.34.0\AndroidManifest.xml:11:5-17:19
 MERGED from [com.amazonaws:aws-android-sdk-cognitoauth:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\cfab035656413b43476b84161bcec476\jetified-aws-android-sdk-cognitoauth-2.34.0\AndroidManifest.xml:11:5-17:19
+MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:26:5-30:19
+MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:26:5-30:19
 MERGED from [com.amazonaws:aws-android-sdk-core:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\6a4c65853a11b0f5973d59a7a177b99b\jetified-aws-android-sdk-core-2.34.0\AndroidManifest.xml:10:5-14:19
 MERGED from [com.amazonaws:aws-android-sdk-core:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\6a4c65853a11b0f5973d59a7a177b99b\jetified-aws-android-sdk-core-2.34.0\AndroidManifest.xml:10:5-14:19
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\1965afa79bd88fc86bf774c86f77e0a3\material-1.0.0\AndroidManifest.xml:22:5-20
@@ -147,8 +143,6 @@ MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Leno
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\54bfc5b629ab063b236b358a8da4bd9c\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\2d547673e05a0f4359ea410021e8e7c2\jetified-play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\2d547673e05a0f4359ea410021e8e7c2\jetified-play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
-MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:22:5-37:19
-MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:22:5-37:19
 MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\af7ff4cdb9585a03f0fe804445629944\jetified-play-services-base-17.0.0\AndroidManifest.xml:22:5-27:19
 MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\af7ff4cdb9585a03f0fe804445629944\jetified-play-services-base-17.0.0\AndroidManifest.xml:22:5-27:19
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\fe7ad5c5f8622be9f18d8f564c1bbb7e\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
@@ -263,16 +257,16 @@ MERGED from [:sqflite] C:\Users\Lenovo\IdeaProjects\project_demo\build\sqflite\i
 MERGED from [:sqflite] C:\Users\Lenovo\IdeaProjects\project_demo\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] C:\Users\Lenovo\IdeaProjects\project_demo\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] C:\Users\Lenovo\IdeaProjects\project_demo\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:google_sign_in] C:\Users\Lenovo\IdeaProjects\project_demo\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:google_sign_in] C:\Users\Lenovo\IdeaProjects\project_demo\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\0f85ce0ae800da7d8168611275a6ab90\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\0f85ce0ae800da7d8168611275a6ab90\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [com.amplifyframework:aws-auth-cognito:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\df79f991f8bea5fffd2bb58eb80dd1ea\jetified-aws-auth-cognito-1.28.3-rc\AndroidManifest.xml:20:5-22:41
 MERGED from [com.amplifyframework:aws-auth-cognito:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\df79f991f8bea5fffd2bb58eb80dd1ea\jetified-aws-auth-cognito-1.28.3-rc\AndroidManifest.xml:20:5-22:41
-MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:20:5-22:41
-MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:20:5-22:41
 MERGED from [com.amazonaws:aws-android-sdk-cognitoauth:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\cfab035656413b43476b84161bcec476\jetified-aws-android-sdk-cognitoauth-2.34.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.amazonaws:aws-android-sdk-cognitoauth:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\cfab035656413b43476b84161bcec476\jetified-aws-android-sdk-cognitoauth-2.34.0\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.browser:browser:1.2.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\461447694282fe4b28d6766cd69fae12\browser-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.2.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\461447694282fe4b28d6766cd69fae12\browser-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:20:5-22:41
+MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:20:5-22:41
 MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\e3c0d797b981e1a2214577b0f29d3ada\jetified-aws-android-sdk-mobile-client-2.34.0\AndroidManifest.xml:12:5-15:96
 MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\e3c0d797b981e1a2214577b0f29d3ada\jetified-aws-android-sdk-mobile-client-2.34.0\AndroidManifest.xml:12:5-15:96
 MERGED from [com.amazonaws:aws-android-sdk-auth-core:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\9e7784d772f42fecdea92b4da1924305\jetified-aws-android-sdk-auth-core-2.34.0\AndroidManifest.xml:6:5-8:41
@@ -313,12 +307,6 @@ MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Leno
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\54bfc5b629ab063b236b358a8da4bd9c\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\2d547673e05a0f4359ea410021e8e7c2\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\2d547673e05a0f4359ea410021e8e7c2\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\030cfff4768389878ec520e38d5ccb73\jetified-play-services-auth-api-phone-16.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\030cfff4768389878ec520e38d5ccb73\jetified-play-services-auth-api-phone-16.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\1de094fdcc6a14961fad7f668e23f0d7\jetified-play-services-auth-base-16.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\1de094fdcc6a14961fad7f668e23f0d7\jetified-play-services-auth-base-16.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\af7ff4cdb9585a03f0fe804445629944\jetified-play-services-base-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\af7ff4cdb9585a03f0fe804445629944\jetified-play-services-base-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\fe7ad5c5f8622be9f18d8f564c1bbb7e\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
@@ -353,8 +341,6 @@ MERGED from [androidx.customview:customview:1.1.0] C:\Users\Lenovo\.gradle\cache
 MERGED from [androidx.customview:customview:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\ab7115890f56e160693dd724b387ceaf\customview-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\47185ad723d232e6208c03e6fdcb34a4\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\47185ad723d232e6208c03e6fdcb34a4\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.browser:browser:1.2.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\461447694282fe4b28d6766cd69fae12\browser-1.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.browser:browser:1.2.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\461447694282fe4b28d6766cd69fae12\browser-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\f2d63b2c28ee1d548ef27f10c2385caa\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\f2d63b2c28ee1d548ef27f10c2385caa\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\9c1469f5a2ad2b4764c3c283cf3fcf11\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
@@ -421,8 +407,6 @@ INJECTED from C:\Users\Lenovo\IdeaProjects\project_demo\android\app\src\debug\An
 		INJECTED from C:\Users\Lenovo\IdeaProjects\project_demo\android\app\src\debug\AndroidManifest.xml
 uses-permission#android.permission.INTERNET
 ADDED from C:\Users\Lenovo\IdeaProjects\project_demo\android\app\src\debug\AndroidManifest.xml:6:5-66
-MERGED from [:google_sign_in] C:\Users\Lenovo\IdeaProjects\project_demo\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-67
-MERGED from [:google_sign_in] C:\Users\Lenovo\IdeaProjects\project_demo\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-67
 MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:24:5-67
 MERGED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:24:5-67
 MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\e3c0d797b981e1a2214577b0f29d3ada\jetified-aws-android-sdk-mobile-client-2.34.0\AndroidManifest.xml:17:5-67
@@ -447,12 +431,6 @@ ADDED from [:image_picker] C:\Users\Lenovo\IdeaProjects\project_demo\build\image
 		ADDED from [:image_picker] C:\Users\Lenovo\IdeaProjects\project_demo\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
 	android:name
 		ADDED from [:image_picker] C:\Users\Lenovo\IdeaProjects\project_demo\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
-activity#com.amplifyframework.devmenu.DeveloperMenuActivity
-ADDED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:27:9-29:54
-	android:theme
-		ADDED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:29:13-51
-	android:name
-		ADDED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:28:13-78
 activity#com.amazonaws.mobileconnectors.cognitoauth.activities.CustomTabsManagerActivity
 ADDED from [com.amazonaws:aws-android-sdk-cognitoauth:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\cfab035656413b43476b84161bcec476\jetified-aws-android-sdk-cognitoauth-2.34.0\AndroidManifest.xml:12:9-16:75
 	android:launchMode
@@ -463,6 +441,12 @@ ADDED from [com.amazonaws:aws-android-sdk-cognitoauth:2.34.0] C:\Users\Lenovo\.g
 		ADDED from [com.amazonaws:aws-android-sdk-cognitoauth:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\cfab035656413b43476b84161bcec476\jetified-aws-android-sdk-cognitoauth-2.34.0\AndroidManifest.xml:16:13-72
 	android:name
 		ADDED from [com.amazonaws:aws-android-sdk-cognitoauth:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\cfab035656413b43476b84161bcec476\jetified-aws-android-sdk-cognitoauth-2.34.0\AndroidManifest.xml:13:13-107
+activity#com.amplifyframework.devmenu.DeveloperMenuActivity
+ADDED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:27:9-29:54
+	android:theme
+		ADDED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:29:13-51
+	android:name
+		ADDED from [com.amplifyframework:core:1.28.3-rc] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\421476c0fa3e80c6407a9fc49a8c59ab\jetified-core-1.28.3-rc\AndroidManifest.xml:28:13-78
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.amazonaws:aws-android-sdk-mobile-client:2.34.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\e3c0d797b981e1a2214577b0f29d3ada\jetified-aws-android-sdk-mobile-client-2.34.0\AndroidManifest.xml:18:5-79
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\2d547673e05a0f4359ea410021e8e7c2\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
@@ -483,24 +467,6 @@ ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Lenovo\.g
 		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\2d547673e05a0f4359ea410021e8e7c2\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
 	android:required
 		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\2d547673e05a0f4359ea410021e8e7c2\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
-activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
-ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:23:9-27:75
-	android:excludeFromRecents
-		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:25:13-46
-	android:exported
-		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:26:13-37
-	android:theme
-		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:27:13-72
-	android:name
-		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:24:13-93
-service#com.google.android.gms.auth.api.signin.RevocationBoundService
-ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:33:9-36:110
-	android:exported
-		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:35:13-36
-	android:permission
-		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:36:13-107
-	android:name
-		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\601aa4ddee5e54c541b6e9758bbce861\jetified-play-services-auth-16.0.1\AndroidManifest.xml:34:13-89
 activity#com.google.android.gms.common.api.GoogleApiActivity
 ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\af7ff4cdb9585a03f0fe804445629944\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
 	android:exported

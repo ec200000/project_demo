@@ -13,7 +13,7 @@ import '../lib/screens/settings_screen.dart';
 void main() {
   testWidgets('Physical Store Screen test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(new MaterialApp(home: new Directionality(textDirection: TextDirection.ltr, child: PhysicalStoreScreen())));
+    await tester.pumpWidget(PhysicalStoreScreen().wrapWithMaterial());
 
     // Verify that our counter starts at 0.
     expect(find.text('About the store'), findsOneWidget);

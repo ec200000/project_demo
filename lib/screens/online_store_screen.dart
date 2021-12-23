@@ -25,6 +25,9 @@ class OnlineStoreScreen extends StatefulWidget {
         ChangeNotifierProvider.value(
           value: Products("","",[]),
         ),
+        ChangeNotifierProvider.value(
+          value: Cart(),
+        ),
       ],
       child: Scaffold(
         body: this,
@@ -59,6 +62,23 @@ class _OnlineStoreScreenState extends State<OnlineStoreScreen> {
         // iconTheme: IconThemeData(color: Colors.black),
         // backgroundColor: Colors.transparent,
         title: Text("" + widget.title, ),
+        actions: [
+          Consumer<Cart>(
+            builder: (_, cart, ch) => Badge(
+              child: ch,
+              value: cart.itemCount.toString(),
+            ),
+            child: IconButton(
+              //color: Colors.black,
+              icon: Icon(
+                Icons.shopping_cart,
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

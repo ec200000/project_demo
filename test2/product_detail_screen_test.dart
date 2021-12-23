@@ -13,7 +13,7 @@ import '../lib/screens/product_detail_screen.dart';
 
 void main() {
 
-  testWidgets('Settings Screen test', (WidgetTester tester) async {
+  testWidgets('Product Detail Screen test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(ProductDetailScreen().wrapWithMaterial());
 

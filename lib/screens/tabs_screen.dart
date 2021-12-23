@@ -70,21 +70,6 @@ class _TabsScreenState extends State<TabsScreen> {
               Navigator.of(context).pushNamed(SettingsScreen.routeName);
             },
           ),
-          Consumer<Cart>(
-            builder: (_, cart, ch) => Badge(
-              child: ch,
-              value: cart.itemCount.toString(),
-            ),
-            child: IconButton(
-              //color: Colors.black,
-              icon: Icon(
-                Icons.shopping_cart,
-              ),
-              onPressed: () {
-                Navigator.of(context).pushNamed(CartScreen.routeName);
-              },
-            ),
-          ),
         ],
       ),
       drawer: AppDrawer(),

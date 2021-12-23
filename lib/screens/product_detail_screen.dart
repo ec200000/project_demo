@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/products.dart';
@@ -18,7 +19,7 @@ class ProductDetailScreen extends StatelessWidget {
       context,
       listen: false,
     ).findById(productId);
-    return Scaffold(
+    return loadedProduct != null ? Scaffold(
       appBar: AppBar(
         title: Text(loadedProduct.title),
       ),
@@ -68,7 +69,7 @@ class ProductDetailScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ) : SplashScreen();
   }
 
   Widget wrapWithMaterial() => MaterialApp(
