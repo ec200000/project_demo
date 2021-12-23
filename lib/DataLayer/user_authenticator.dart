@@ -12,7 +12,11 @@ class UserAuthenticator {
 
   Future<bool> signIn(AuthProvider authProvider) async {
     try {
-      await Amplify.Auth.signInWithWebUI(provider: authProvider);
+      SignInResult res = await Amplify.Auth.signInWithWebUI(provider: authProvider);
+      var res1 = await Amplify.Auth.fetchUserAttributes();
+      res1.forEach((element) {
+        print('key: ${element.userAttributeKey}; value: ${element.value}');
+      });
     } catch (e) {
       print(e);
       return false;
