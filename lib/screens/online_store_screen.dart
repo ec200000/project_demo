@@ -12,12 +12,25 @@ import '../providers/products.dart';
 class OnlineStoreScreen extends StatefulWidget {
   static const routeName = '/online-store';
 
-  String title;
-  String address;
-  String image;
+  String title = "";
+  String address = "";
+  String image = "";
 
   @override
   _OnlineStoreScreenState createState() => _OnlineStoreScreenState();
+
+  Widget wrapWithMaterial() => MaterialApp(
+    home: MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Products("","",[]),
+        ),
+      ],
+      child: Scaffold(
+        body: this,
+      ),
+    ),
+  );
 }
 
 class _OnlineStoreScreenState extends State<OnlineStoreScreen> {
@@ -30,9 +43,11 @@ class _OnlineStoreScreenState extends State<OnlineStoreScreen> {
   @override
   void didChangeDependencies() {
     final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
-    widget.title = routeArgs['title'];
-    widget.address = routeArgs['address'];
-    widget.image = routeArgs['image'];
+    if(routeArgs!=null){
+      widget.title = routeArgs['title'];
+      widget.address = routeArgs['address'];
+      widget.image = routeArgs['image'];
+    }
     super.didChangeDependencies();
   }
 
@@ -49,7 +64,7 @@ class _OnlineStoreScreenState extends State<OnlineStoreScreen> {
         child: Column(
           children: [
             Center(
-              child: Image.asset(widget.image),
+              child: widget.image!="" ? Image.asset(widget.image) : null,
             ),
             ListTile(
               title: Text("About the store", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
