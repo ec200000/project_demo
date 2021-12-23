@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/models/store.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/product.dart';
@@ -9,6 +10,18 @@ class EditStoreScreen extends StatefulWidget {
 
   @override
   _EditStoreScreenState createState() => _EditStoreScreenState();
+  Widget wrapWithMaterial() => MaterialApp(
+    home: MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Products("", "", []),
+        ),
+      ],
+      child: Scaffold(
+        body: this,
+      ),
+    ),
+  );
 }
 
 class _EditStoreScreenState extends State<EditStoreScreen> {
