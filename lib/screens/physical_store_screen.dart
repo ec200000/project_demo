@@ -12,9 +12,9 @@ import '../providers/products.dart';
 class PhysicalStoreScreen extends StatefulWidget {
   static const routeName = '/physical-store';
 
-  String title;
-  String address;
-  String image;
+  String title = "";
+  String address = "";
+  String image = "";
 
   @override
   _PhysicalStoreScreenState createState() => _PhysicalStoreScreenState();
@@ -30,9 +30,11 @@ class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
   @override
   void didChangeDependencies() {
     final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
-    widget.title = routeArgs['title'];
-    widget.address = routeArgs['address'];
-    widget.image = routeArgs['image'];
+    if(routeArgs!=null){
+      widget.title = routeArgs['title'];
+      widget.address = routeArgs['address'];
+      widget.image = routeArgs['image'];
+    }
     super.didChangeDependencies();
   }
 
@@ -49,7 +51,7 @@ class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
         child: Column(
           children: [
               Center(
-                child: Image.asset(widget.image),
+                child: widget.image!="" ? Image.asset(widget.image) : null,
               ),
             ListTile(
               title: Text("About the store", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
