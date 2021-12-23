@@ -2,6 +2,11 @@ PODS:
   - Amplify (1.15.6):
     - Amplify/Default (= 1.15.6)
   - Amplify/Default (1.15.6)
+  - amplify_api (0.0.1):
+    - Amplify (~> 1.15.5)
+    - amplify_core
+    - AmplifyPlugins/AWSAPIPlugin (~> 1.15.5)
+    - Flutter
   - amplify_auth_cognito (0.0.1):
     - Amplify (~> 1.15.5)
     - amplify_core
@@ -10,12 +15,21 @@ PODS:
     - ObjectMapper
   - amplify_core (0.0.1):
     - Flutter
+  - amplify_datastore (0.0.1):
+    - Amplify (~> 1.15.5)
+    - amplify_core
+    - AmplifyPlugins/AWSDataStorePlugin (~> 1.15.5)
+    - Flutter
   - amplify_flutter (0.0.1):
     - Amplify (~> 1.15.5)
     - amplify_core
     - AmplifyPlugins/AWSCognitoAuthPlugin (~> 1.15.5)
     - AWSPluginsCore (~> 1.15.5)
     - Flutter
+  - AmplifyPlugins/AWSAPIPlugin (1.15.6):
+    - AppSyncRealTimeClient (~> 1.4)
+    - AWSCore (~> 2.26.1)
+    - AWSPluginsCore (= 1.15.6)
   - AmplifyPlugins/AWSCognitoAuthPlugin (1.15.6):
     - AWSAuthCore (~> 2.26.1)
     - AWSCognitoIdentityProvider (~> 2.26.1)
@@ -23,6 +37,12 @@ PODS:
     - AWSCore (~> 2.26.1)
     - AWSMobileClient (~> 2.26.1)
     - AWSPluginsCore (= 1.15.6)
+  - AmplifyPlugins/AWSDataStorePlugin (1.15.6):
+    - AWSCore (~> 2.26.1)
+    - AWSPluginsCore (= 1.15.6)
+    - SQLite.swift (= 0.12.2)
+  - AppSyncRealTimeClient (1.6.0):
+    - Starscream (~> 3.1.1)
   - AWSAuthCore (2.26.6):
     - AWSCore (= 2.26.6)
   - AWSCognitoIdentityProvider (2.26.6):
@@ -63,10 +83,16 @@ PODS:
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
+  - SQLite.swift (0.12.2):
+    - SQLite.swift/standard (= 0.12.2)
+  - SQLite.swift/standard (0.12.2)
+  - Starscream (3.1.1)
 
 DEPENDENCIES:
+  - amplify_api (from `.symlinks/plugins/amplify_api/ios`)
   - amplify_auth_cognito (from `.symlinks/plugins/amplify_auth_cognito/ios`)
   - amplify_core (from `.symlinks/plugins/amplify_core/ios`)
+  - amplify_datastore (from `.symlinks/plugins/amplify_datastore/ios`)
   - amplify_flutter (from `.symlinks/plugins/amplify_flutter/ios`)
   - Flutter (from `Flutter`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
@@ -80,6 +106,7 @@ SPEC REPOS:
   trunk:
     - Amplify
     - AmplifyPlugins
+    - AppSyncRealTimeClient
     - AWSAuthCore
     - AWSCognitoIdentityProvider
     - AWSCognitoIdentityProviderASF
@@ -89,12 +116,18 @@ SPEC REPOS:
     - FMDB
     - GoogleMaps
     - ObjectMapper
+    - SQLite.swift
+    - Starscream
 
 EXTERNAL SOURCES:
+  amplify_api:
+    :path: ".symlinks/plugins/amplify_api/ios"
   amplify_auth_cognito:
     :path: ".symlinks/plugins/amplify_auth_cognito/ios"
   amplify_core:
     :path: ".symlinks/plugins/amplify_core/ios"
+  amplify_datastore:
+    :path: ".symlinks/plugins/amplify_datastore/ios"
   amplify_flutter:
     :path: ".symlinks/plugins/amplify_flutter/ios"
   Flutter:
@@ -114,10 +147,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Amplify: d6ec04316dd74852f6a968d89c0f8cab9947d4d5
+  amplify_api: d2e245623799af22ef371b9bcc960277c965ebb4
   amplify_auth_cognito: af3d562913c44b5508a68ed73105a0488a56bf36
   amplify_core: 8b38d20089fe4f225c14db6892f586bd03824a42
+  amplify_datastore: 1d0addd7741cc1b6ee7314f4f44a0755326ef231
   amplify_flutter: 372e5d0210d6de0cbf7be025dbd20cc21831ab24
   AmplifyPlugins: 7cfe5a34e97c6091855c10d83ccda538fb371cd1
+  AppSyncRealTimeClient: 8b5ec94085b8ee9bb6fb9d9d76a157beb538ec6f
   AWSAuthCore: 19808b0221c0963c650e8d9d8c65465b7e50c6e1
   AWSCognitoIdentityProvider: eeb90cf37247ce868fe3bbfdfb2a6b5bd2f47c73
   AWSCognitoIdentityProviderASF: 2be698f72bebb21c1846d10c3d8d2e21c08d97bd
@@ -134,7 +170,9 @@ SPEC CHECKSUMS:
   path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: 62035839f747b1f4d5a0360e32c4a3f1d0987170
+PODFILE CHECKSUM: 5637938b1a89f17a3862a0278863745ba9553318
 
 COCOAPODS: 1.11.2

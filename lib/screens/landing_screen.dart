@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/LogicLayer/User.dart';
+import 'package:provider/src/provider.dart';
 import '../screens/tabs_screen.dart';
 import '../screens/auth_screen.dart';
-import '../models/app_user.dart';
-import 'package:provider/provider.dart';
 import 'package:amplify_flutter/amplify.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 
@@ -24,13 +24,8 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: isSignedIn(),
-      builder: (ctx, AsyncSnapshot<bool> snapshot) =>
-      snapshot.hasData ? snapshot.data
-          ? TabsScreen()
-          : AuthScreen()
-      : SplashScreen(),
-    );
+    final appUser = context.watch<User>().isSignedIn;
+    print(appUser);
+    return appUser ? TabsScreen() : AuthScreen();
   }
 }

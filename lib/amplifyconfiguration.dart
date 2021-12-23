@@ -69,6 +69,40 @@ const amplifyconfig = ''' {
                             "EMAIL"
                         ]
                     }
+                },
+                "AppSync": {
+                    "Default": {
+                        "ApiUrl": "https://nsrapwi26bdzdilplddgt7hdie.appsync-api.us-east-1.amazonaws.com/graphql",
+                        "Region": "us-east-1",
+                        "AuthMode": "API_KEY",
+                        "ApiKey": "da2-6qwxs2x4ljfxfb6nosc5ourplm",
+                        "ClientDatabasePrefix": "yrozproject_API_KEY"
+                    },
+                    "yrozproject_AWS_IAM": {
+                        "ApiUrl": "https://nsrapwi26bdzdilplddgt7hdie.appsync-api.us-east-1.amazonaws.com/graphql",
+                        "Region": "us-east-1",
+                        "AuthMode": "AWS_IAM",
+                        "ClientDatabasePrefix": "yrozproject_AWS_IAM"
+                    },
+                    "yrozproject_AMAZON_COGNITO_USER_POOLS": {
+                        "ApiUrl": "https://nsrapwi26bdzdilplddgt7hdie.appsync-api.us-east-1.amazonaws.com/graphql",
+                        "Region": "us-east-1",
+                        "AuthMode": "AMAZON_COGNITO_USER_POOLS",
+                        "ClientDatabasePrefix": "yrozproject_AMAZON_COGNITO_USER_POOLS"
+                    }
+                }
+            }
+        }
+    },
+    "api": {
+        "plugins": {
+            "awsAPIPlugin": {
+                "yrozproject": {
+                    "endpointType": "GraphQL",
+                    "endpoint": "https://nsrapwi26bdzdilplddgt7hdie.appsync-api.us-east-1.amazonaws.com/graphql",
+                    "region": "us-east-1",
+                    "authorizationType": "API_KEY",
+                    "apiKey": "da2-6qwxs2x4ljfxfb6nosc5ourplm"
                 }
             }
         }

@@ -34,7 +34,6 @@ class PhysicalStoreScreen extends StatefulWidget {
 }
 
 class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -42,8 +41,9 @@ class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
 
   @override
   void didChangeDependencies() {
-    final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
-    if(routeArgs!=null){
+    final routeArgs =
+        ModalRoute.of(context).settings.arguments as Map<String, String>;
+    if (routeArgs != null) {
       widget.title = routeArgs['title'];
       widget.address = routeArgs['address'];
       widget.image = routeArgs['image'];
@@ -76,11 +76,14 @@ class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-              Center(
-                child: widget.image!="" ? Image.asset(widget.image) : null,
-              ),
+            Center(
+              child: widget.image != "" ? Image.asset(widget.image) : null,
+            ),
             ListTile(
-              title: Text("About the store", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+              title: Text(
+                "About the store",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
               onTap: () {
                 //open change language
               },
@@ -114,7 +117,11 @@ class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
                 Icons.language,
                 color: Colors.grey,
               ),
-              title: Text("www.mooo.com", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueAccent),),
+              title: Text(
+                "www.mooo.com",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.blueAccent),
+              ),
               onTap: () {
                 //open change language
               },
@@ -129,9 +136,9 @@ class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
                 //open change language
               },
             ),
-            ],
-          ),
+          ],
         ),
+      ),
     );
   }
 }

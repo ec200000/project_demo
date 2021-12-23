@@ -1,27 +1,35 @@
 import 'package:amplify_flutter/amplify.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:project_demo/DataLayer/UsersStorageProxy.dart';
+import 'package:project_demo/models/ModelProvider.dart';
 
 class UserAuthenticator {
   static final UserAuthenticator _singleton = UserAuthenticator._internal();
-
+  String _currentUserId = "";
   factory UserAuthenticator() {
     return _singleton;
   }
 
   UserAuthenticator._internal();
 
-  Future<bool> signIn(AuthProvider authProvider) async {
+  Future<UserModel> signIn(AuthProvider authProvider) async {
+    UserModel currUser = null;
     try {
-      SignInResult res = await Amplify.Auth.signInWithWebUI(provider: authProvider);
-      var res1 = await Amplify.Auth.fetchUserAttributes();
-      res1.forEach((element) {
+      await Amplify.Auth.signInWithWebUI(provider: authProvider);
+      var res = await Amplify.Auth.fetchUserAttributes();
+      var email, name, picture;
+      for (var element in res) {
+        if (element.userAttributeKey == "given_name") name = element.value;
+        if (element.userAttributeKey == "email") email = element.value;
+        if (element.userAttributeKey == "picture") picture = element.value;
         print('key: ${element.userAttributeKey}; value: ${element.value}');
-      });
+      }
+      currUser = await UsersStorageProxy().createUser(email, name, picture);
+      _currentUserId = email;
     } catch (e) {
       print(e);
-      return false;
     }
-    return true;
+    return currUser;
   }
 
   Future<bool> signOut() async {

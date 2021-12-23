@@ -73,15 +73,15 @@ class ProductDetailScreen extends StatelessWidget {
   }
 
   Widget wrapWithMaterial() => MaterialApp(
-    home: MultiProvider(
-        providers: [
-        ChangeNotifierProvider.value(
-          value: Products("","",[]),
+        home: MultiProvider(
+          providers: [
+            ChangeNotifierProvider.value(
+              value: Products("", "", []),
+            ),
+          ],
+          child: Scaffold(
+            body: this,
+          ),
         ),
-      ],
-      child: Scaffold(
-        body: this,
-      ),
-    ),
-  );
+      );
 }

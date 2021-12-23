@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:project_demo/models/app_user.dart';
+import 'package:project_demo/LogicLayer/User.dart';
 import '../screens/tabs_screen.dart';
 import '../models/http_exception.dart';
 import '../providers/auth.dart';
@@ -66,7 +66,8 @@ class AuthCard extends StatefulWidget {
   _AuthCardState createState() => _AuthCardState();
 }
 
-class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin {
+class _AuthCardState extends State<AuthCard>
+    with SingleTickerProviderStateMixin {
   final GlobalKey<FormState> _formKey = GlobalKey();
   AuthMode _authMode = AuthMode.Login;
   var _isLoading = false;
@@ -76,9 +77,14 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 300));
-    _heightAnimation = Tween<Size>(end: Size(double.infinity, 320.0) , begin: Size(double.infinity, 260.0)).animate(CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn));
-    _heightAnimation.addListener(() => setState((){}));
+    _controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    _heightAnimation = Tween<Size>(
+            end: Size(double.infinity, 320.0),
+            begin: Size(double.infinity, 260.0))
+        .animate(
+            CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn));
+    _heightAnimation.addListener(() => setState(() {}));
   }
 
   void _showErrorDialog(String message) {
@@ -128,13 +134,17 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
                       SignInButton(
                         Buttons.Google,
                         onPressed: () {
-                          context.read<AppUser>().signIn(AuthProvider.google, context);
+                          context
+                              .read<User>()
+                              .signIn(AuthProvider.google, context);
                         },
                       ),
                       SignInButton(
                         Buttons.FacebookNew,
                         onPressed: () {
-                          context.read<AppUser>().signIn(AuthProvider.facebook, context);
+                          context
+                              .read<User>()
+                              .signIn(AuthProvider.facebook, context);
                         },
                       ),
                     ],

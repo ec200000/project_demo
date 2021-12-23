@@ -43,6 +43,8 @@ dependencies:
   geolocator: ^7.0.0
   amplify_flutter: ^0.2.10
   amplify_auth_cognito: ^0.2.10
+  amplify_datastore: ^0.2.10
+  amplify_api: ^0.2.10
 
 
   # The following adds the Cupertino Icons font to your application.
