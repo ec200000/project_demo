@@ -9,6 +9,18 @@ class EditProductScreen extends StatefulWidget {
 
   @override
   _EditProductScreenState createState() => _EditProductScreenState();
+  Widget wrapWithMaterial() => MaterialApp(
+    home: MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Product(id: "", title: "", description: "", category: "", price: 0, imageUrl: ""),
+        ),
+      ],
+      child: Scaffold(
+        body: this,
+      ),
+    ),
+  );
 }
 
 class _EditProductScreenState extends State<EditProductScreen> {
