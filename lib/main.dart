@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 
 import 'amplifyconfiguration.dart';
 import 'models/app_user.dart';
-import 'providers/great_places.dart';
 import 'providers/auth.dart';
 import 'providers/cart.dart';
 import 'providers/orders.dart';
@@ -18,7 +17,6 @@ import 'screens/landing_screen.dart';
 import 'screens/payment_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/category_screen.dart';
-import 'screens/auth_screen.dart';
 import 'screens/cart_screen.dart';
 import 'screens/edit_product_screen.dart';
 import 'screens/open_store_screen.dart';
@@ -95,9 +93,6 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProxyProvider<Auth, Orders>(
           create: null,
           update: (con, val, old) => Orders(val.token, val.userId, old == null ? [] : old.orders),
-        ),
-        ChangeNotifierProvider.value(
-          value: GreatPlaces(),
         ),
         ChangeNotifierProvider(
             create: (context) => ApplicationBloc(),

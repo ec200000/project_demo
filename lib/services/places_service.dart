@@ -3,7 +3,6 @@ import '../models/place_search.dart';
 import '../models/place.dart';
 import 'dart:convert' as convert;
 
-
 class PlacesService {
   final key = 'AIzaSyB5WVi9hX8knkVn1bk_8oTBIxd0MzMXfvs';
 

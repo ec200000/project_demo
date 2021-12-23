@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screens/category_screen.dart';
 
-
 class CategoryItem extends StatelessWidget {
   final String id;
   final String title;
@@ -62,46 +61,7 @@ class CategoryItem extends StatelessWidget {
           )
       ),
       onTap:() => selectCategory(context),
-        // child: Container(
-        //     width: 120,
-        //     height: 40,
-        //     padding: const EdgeInsets.all(15),
-        //     decoration: BoxDecoration(
-        //         color: Colors.black,
-        //         image: DecorationImage(
-        //             image: this.title == 'Food' ? AssetImage("assets/images/food.png") : AssetImage("assets/images/home.png"),
-        //             fit: BoxFit.cover
-        //         ),
-        //         borderRadius: BorderRadius.circular(15),
-        //     ),
-        //     child: Text(title,
-        //     ),
-        // ),
-        // onTap:() => selectCategory(context),
-    );
 
-    //   InkWell(
-    //   onTap: () => selectCategory(context),
-    //   splashColor: Theme.of(context).primaryColor,
-    //   borderRadius: BorderRadius.circular(15),
-    //   child: Container(
-    //     padding: const EdgeInsets.all(15),
-    //     child: Text(
-    //       title,
-    //       style: Theme.of(context).textTheme.title,
-    //     ),
-    //     decoration: BoxDecoration(
-    //       gradient: LinearGradient(
-    //         colors: [
-    //           color.withOpacity(0.7),
-    //           color,
-    //         ],
-    //         begin: Alignment.topLeft,
-    //         end: Alignment.bottomRight,
-    //       ),
-    //       borderRadius: BorderRadius.circular(15),
-    //     ),
-    //   ),
-    // );
+    );
   }
 }

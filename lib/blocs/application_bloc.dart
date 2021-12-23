@@ -26,11 +26,9 @@ class ApplicationBloc with ChangeNotifier {
   List<Place> placeResults;
   List<Marker> markers = List<Marker>();
 
-
   ApplicationBloc() {
     setCurrentLocation();
   }
-
 
   setCurrentLocation() async {
     currentLocation = await geoLocatorService.getCurrentLocation();
@@ -44,7 +42,6 @@ class ApplicationBloc with ChangeNotifier {
     searchResults = await placesService.getAutocomplete(searchTerm);
     notifyListeners();
   }
-
 
   setSelectedLocation(String placeId) async {
     var sLocation = await placesService.getPlace(placeId);
@@ -88,8 +85,6 @@ class ApplicationBloc with ChangeNotifier {
       notifyListeners();
     }
   }
-
-
 
   @override
   void dispose() {
