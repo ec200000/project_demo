@@ -35,7 +35,7 @@ class ProductDetailScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              '\$${loadedProduct.price}',
+              'Price: \€ ${loadedProduct.price}',
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 20,
@@ -49,6 +49,18 @@ class ProductDetailScreen extends StatelessWidget {
               width: double.infinity,
               child: Text(
                 loadedProduct.description,
+                textAlign: TextAlign.center,
+                softWrap: true,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              width: double.infinity,
+              child: Text(
+                "Category: " + loadedProduct.category,
                 textAlign: TextAlign.center,
                 softWrap: true,
               ),
