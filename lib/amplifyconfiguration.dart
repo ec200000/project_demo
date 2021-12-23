@@ -12,15 +12,15 @@ const amplifyconfig = ''' {
                 "CredentialsProvider": {
                     "CognitoIdentity": {
                         "Default": {
-                            "PoolId": "us-east-1:6300d416-b4d5-48d4-ac38-00c80b305123",
+                            "PoolId": "us-east-1:8aba7716-b803-494f-820b-93e498fb27f2",
                             "Region": "us-east-1"
                         }
                     }
                 },
                 "CognitoUserPool": {
                     "Default": {
-                        "PoolId": "us-east-1_DhRgEeGPn",
-                        "AppClientId": "35l3o06gj1i6kkl2h7j18p329f",
+                        "PoolId": "us-east-1_zp9jHHTIz",
+                        "AppClientId": "1ni3jmfpsmf164nrg9pqjjkdrk",
                         "Region": "us-east-1"
                     }
                 },
@@ -28,7 +28,7 @@ const amplifyconfig = ''' {
                     "Default": {
                         "OAuth": {
                             "WebDomain": "6rwo46y6jf7f-staging.auth.us-east-1.amazoncognito.com",
-                            "AppClientId": "35l3o06gj1i6kkl2h7j18p329f",
+                            "AppClientId": "1ni3jmfpsmf164nrg9pqjjkdrk",
                             "SignInRedirectURI": "myapp://",
                             "SignOutRedirectURI": "myapp://",
                             "Scopes": [
@@ -48,7 +48,9 @@ const amplifyconfig = ''' {
                             "EMAIL"
                         ],
                         "signupAttributes": [
-                            "EMAIL"
+                            "EMAIL",
+                            "GIVEN_NAME",
+                            "PICTURE"
                         ],
                         "passwordProtectionSettings": {
                             "passwordPolicyMinLength": 8,
