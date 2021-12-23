@@ -11,23 +11,11 @@ import 'package:project_demo/providers/products.dart';
 import 'package:provider/provider.dart';
 import '../lib/screens/product_detail_screen.dart';
 
-
 void main() {
+
   testWidgets('Settings Screen test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(
-      home: ChangeNotifierProvider(
-          create: (context) => Products("","",[]),  //change builder to create
-          child:  Builder(
-          builder: (BuildContext newContext) {
-            Consumer<Products>(
-                builder: (context, provider, child) => new Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: MediaQuery(
-                        data: MediaQueryData(), child: ProductDetailScreen())));
-          }),
-      )
-    ));
+    await tester.pumpWidget(ProductDetailScreen().wrapWithMaterial());
 
     // Verify that our counter starts at 0.
     expect(find.text('\€'), findsOneWidget);
