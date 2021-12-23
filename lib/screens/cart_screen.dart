@@ -60,6 +60,18 @@ class CartScreen extends StatelessWidget {
       ),
     );
   }
+  Widget wrapWithMaterial() => MaterialApp(
+    home: MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Cart(),
+        ),
+      ],
+      child: Scaffold(
+        body: this,
+      ),
+    ),
+  );
 }
 
 class OrderButton extends StatefulWidget {
