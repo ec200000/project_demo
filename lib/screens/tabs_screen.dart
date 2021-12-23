@@ -57,12 +57,8 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title'],),
-        //backgroundColor: Colors.transparent,
-        //elevation: 0,
-        //iconTheme: IconThemeData(color: Colors.black),
         actions: [
           IconButton(
-            //color: Colors.black,
             icon: Icon(
               Icons.settings_outlined,
             ),
@@ -78,12 +74,10 @@ class _TabsScreenState extends State<TabsScreen> {
         type: BottomNavigationBarType.fixed,
         onTap: _selectPage,
         backgroundColor: Colors.white,
-        //fixedColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.grey,
         selectedItemColor: Theme.of(context).primaryColor,
         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         currentIndex: _selectedPageIndex,
-        // type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,

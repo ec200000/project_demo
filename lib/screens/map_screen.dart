@@ -42,8 +42,7 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   void initState() {
-    final applicationBloc =
-    Provider.of<ApplicationBloc>(context, listen: false);
+    final applicationBloc = Provider.of<ApplicationBloc>(context, listen: false);
 
     //Listen for selected Location
     locationSubscription = applicationBloc.selectedLocation.stream.listen((place) {
@@ -101,7 +100,8 @@ class _MapScreenState extends State<MapScreen> {
                       initialCameraPosition: CameraPosition(
                         target: LatLng(
                             applicationBloc.currentLocation.latitude,
-                            applicationBloc.currentLocation.longitude),
+                            applicationBloc.currentLocation.longitude
+                        ),
                         zoom: 14,
                       ),
                       onMapCreated: (GoogleMapController controller) {
@@ -117,46 +117,34 @@ class _MapScreenState extends State<MapScreen> {
                       children: [
                         FilterChip(
                           label: Text('Campground'),
-                          onSelected: (val) => applicationBloc.togglePlaceType(
-                              'campground', val),
-                          selected:
-                          applicationBloc.placeType  =='campground',
+                          onSelected: (val) => applicationBloc.togglePlaceType('campground', val),
+                          selected: applicationBloc.placeType  =='campground',
                           selectedColor: Colors.blue,
                         ),
                         FilterChip(
                             label: Text('Locksmith'),
-                            onSelected: (val) => applicationBloc
-                                .togglePlaceType('locksmith', val),
+                            onSelected: (val) => applicationBloc.togglePlaceType('locksmith', val),
                             selected: applicationBloc.placeType  =='locksmith',
                             selectedColor: Colors.blue),
                         FilterChip(
                             label: Text('Pharmacy'),
-                            onSelected: (val) => applicationBloc
-                                .togglePlaceType('pharmacy', val),
-                            selected:
-                            applicationBloc.placeType  =='pharmacy',
+                            onSelected: (val) => applicationBloc.togglePlaceType('pharmacy', val),
+                            selected: applicationBloc.placeType  =='pharmacy',
                             selectedColor: Colors.blue),
                         FilterChip(
                             label: Text('Pet Store'),
-                            onSelected: (val) => applicationBloc
-                                .togglePlaceType('pet_store', val),
+                            onSelected: (val) => applicationBloc.togglePlaceType('pet_store', val),
                             selected: applicationBloc.placeType  =='pet_store',
                             selectedColor: Colors.blue),
                         FilterChip(
                             label: Text('Lawyer'),
-                            onSelected: (val) =>
-                                applicationBloc
-                                    .togglePlaceType('lawyer', val),
-                            selected:
-                            applicationBloc.placeType  =='lawyer',
+                            onSelected: (val) => applicationBloc.togglePlaceType('lawyer', val),
+                            selected: applicationBloc.placeType  =='lawyer',
                             selectedColor: Colors.blue),
                         FilterChip(
                             label: Text('Bank'),
-                            onSelected: (val) =>
-                                applicationBloc
-                                    .togglePlaceType('bank', val),
-                            selected:
-                            applicationBloc.placeType  =='bank',
+                            onSelected: (val) => applicationBloc.togglePlaceType('bank', val),
+                            selected: applicationBloc.placeType  =='bank',
                             selectedColor: Colors.blue),
                       ],
                     ),
@@ -177,14 +165,12 @@ class _MapScreenState extends State<MapScreen> {
                           itemBuilder: (context, index) {
                             return ListTile(
                               title: Text(
-                                applicationBloc
-                                    .searchResults[index].description,
+                                applicationBloc.searchResults[index].description,
                                 style: TextStyle(color: Colors.white),
                               ),
                               onTap: () {
                                 applicationBloc.setSelectedLocation(
-                                    applicationBloc
-                                        .searchResults[index].placeId);
+                                    applicationBloc.searchResults[index].placeId);
                               },
                             );
                           }),
@@ -201,9 +187,9 @@ class _MapScreenState extends State<MapScreen> {
     controller.animateCamera(
       CameraUpdate.newCameraPosition(
         CameraPosition(
-            target: LatLng(
-                place.geometry.location.lat, place.geometry.location.lng),
-            zoom: 14.0),
+            target: LatLng(place.geometry.location.lat, place.geometry.location.lng),
+            zoom: 14.0
+        ),
       ),
     );
   }

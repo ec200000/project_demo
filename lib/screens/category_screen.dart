@@ -62,9 +62,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // elevation: 0,
-        // iconTheme: IconThemeData(color: Colors.black),
-        // backgroundColor: Colors.transparent,
         title: Text(widget.title, ),
       ),
       body: _isLoading

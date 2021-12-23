@@ -55,9 +55,6 @@ class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // elevation: 0,
-        // iconTheme: IconThemeData(color: Colors.black),
-        // backgroundColor: Colors.transparent,
         title: Text("" + widget.title, ),
         actions: [
           Consumer<Cart>(
@@ -66,7 +63,6 @@ class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
               value: cart.itemCount.toString(),
             ),
             child: IconButton(
-              //color: Colors.black,
               icon: Icon(
                 Icons.shopping_cart,
               ),

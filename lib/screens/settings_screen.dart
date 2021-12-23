@@ -24,10 +24,6 @@ class _SettingsPageState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          // elevation: 0,
-          // brightness: Brightness.light,
-          // iconTheme: IconThemeData(color: Colors.black),
-          // backgroundColor: Colors.transparent,
           title: Text('Settings',),
           actions: <Widget>[
           ],
@@ -131,7 +127,6 @@ class _SettingsPageState extends State<SettingsScreen> {
                           trailing: Icon(Icons.keyboard_arrow_right),
                           onTap: () {
                             Navigator.of(context).pushNamed(OpenStoreScreen.routeName);
-                            //open change language
                           },
                         ),
                       ]

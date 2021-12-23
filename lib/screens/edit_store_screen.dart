@@ -129,27 +129,17 @@ class _EditStoreScreenState extends State<EditStoreScreen> {
           ),
         );
       }
-      // finally {
-      //   setState(() {
-      //     _isLoading = false;
-      //   });
-      //   Navigator.of(context).pop();
-      // }
     }
     setState(() {
       _isLoading = false;
     });
     Navigator.of(context).pop();
-    // Navigator.of(context).pop();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // elevation: 0,
-        // iconTheme: IconThemeData(color: Colors.black),
-        // backgroundColor: Colors.transparent,
         title: Text('Edit Store',),
         actions: <Widget>[
           IconButton(
