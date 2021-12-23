@@ -19,6 +19,19 @@ class MapScreen extends StatefulWidget {
 
   @override
   _MapScreenState createState() => _MapScreenState();
+
+  Widget wrapWithMaterial() => MaterialApp(
+    home: MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: ApplicationBloc(),
+        ),
+      ],
+      child: Scaffold(
+        body: this,
+      ),
+    ),
+  );
 }
 
 class _MapScreenState extends State<MapScreen> {
