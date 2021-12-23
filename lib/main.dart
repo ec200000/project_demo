@@ -21,13 +21,11 @@ import 'screens/category_screen.dart';
 import 'screens/auth_screen.dart';
 import 'screens/cart_screen.dart';
 import 'screens/edit_product_screen.dart';
-import 'screens/filters_screen.dart';
 import 'screens/open_store_screen.dart';
 import 'screens/product_detail_screen.dart';
 import 'screens/products_overview_screen.dart';
 import 'screens/splash_screen.dart';
 import 'screens/tabs_screen.dart';
-import 'screens/user_products_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -128,7 +126,6 @@ class _MyAppState extends State<MyApp> {
             routes: {
               ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
               CartScreen.routeName: (ctx) => CartScreen(),
-              UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
               EditProductScreen.routeName: (ctx) => EditProductScreen(),
               CategoryScreen.routeName: (ctx) => CategoryScreen(),
               TabsScreen.routeName: (ctx) => TabsScreen(),
