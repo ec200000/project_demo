@@ -1,12 +1,12 @@
 import 'package:project_demo/LogicLayer/Categories.dart';
 
-class Product {
+class ProductDTO {
   String name;
   List<Categories> categories;
   double price;
   String imageUrl;
   String description;
 
-  Product(
+  ProductDTO(
       this.name, this.price, this.categories, this.imageUrl, this.description);
 }

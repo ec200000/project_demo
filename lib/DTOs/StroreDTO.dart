@@ -1,13 +1,12 @@
 import 'package:project_demo/LogicLayer/Categories.dart';
 
-class PhysicalStore {
+class StoreDTO {
   String name;
   String phoneNumber;
   String address;
   List<Categories> categories;
   Map<int, DateTime> operationHours;
-  String qrCode;
 
-  PhysicalStore(this.name, this.phoneNumber, this.address, this.categories,
-      this.operationHours, this.qrCode);
+  StoreDTO(this.name, this.phoneNumber, this.address, this.categories,
+      this.operationHours);
 }

@@ -1,4 +1,5 @@
 import 'package:amplify_flutter/amplify.dart';
+import 'package:project_demo/DataLayer/user_authenticator.dart';
 import 'package:project_demo/models/ModelProvider.dart';
 
 class UsersStorageProxy {
@@ -38,5 +39,49 @@ class UsersStorageProxy {
         where: UserModel.EMAIL.eq(email));
 
     return users.isEmpty ? null : users.first;
+  }
+
+  Future<String> getStoreOwnerStateId() async {
+    String emailCurrUser = UserAuthenticator().getCurrentUserId();
+    UserModel currUser = await getUser(emailCurrUser);
+    if (currUser == null) {
+      throw Exception(
+          "current user model is null, user's email: " + emailCurrUser);
+    }
+    return currUser.userModelStoreOwnerModelId;
+  }
+
+  Future<StoreOwnerModel> getStoreOwnerState() async {
+    String emailCurrUser = UserAuthenticator().getCurrentUserId();
+    UserModel currUser = await getUser(emailCurrUser);
+    List<StoreOwnerModel> storeOwners = await Amplify.DataStore.query(
+        StoreOwnerModel.classType,
+        where: StoreOwnerModel.ID.eq(currUser.userModelStoreOwnerModelId));
+    return storeOwners.isEmpty ? null : storeOwners.first;
+  }
+
+  void addOnlineStoreToStoreOwnerState(OnlineStoreModel onlineStore) async {
+    StoreOwnerModel oldStoreOwner = await getStoreOwnerState();
+    StoreOwnerModel updatedStoreOwner = oldStoreOwner.copyWith(
+        id: oldStoreOwner.id,
+        onlineStoreModel: onlineStore,
+        physicalStoreModel: oldStoreOwner.physicalStoreModel,
+        storeOwnerModelOnlineStoreModelId: onlineStore.id,
+        storeOwnerModelPhysicalStoreModelId:
+            oldStoreOwner.storeOwnerModelPhysicalStoreModelId);
+    await Amplify.DataStore.save(updatedStoreOwner);
+  }
+
+  void addPhysicalStoreToStoreOwnerState(
+      PhysicalStoreModel physicalStore) async {
+    StoreOwnerModel oldStoreOwner = await getStoreOwnerState();
+    StoreOwnerModel updatedStoreOwner = oldStoreOwner.copyWith(
+        id: oldStoreOwner.id,
+        onlineStoreModel: oldStoreOwner.onlineStoreModel,
+        physicalStoreModel: physicalStore,
+        storeOwnerModelOnlineStoreModelId:
+            oldStoreOwner.storeOwnerModelOnlineStoreModelId,
+        storeOwnerModelPhysicalStoreModelId: physicalStore.id);
+    await Amplify.DataStore.save(updatedStoreOwner);
   }
 }

@@ -41,4 +41,8 @@ class UserAuthenticator {
     }
     return false; //false indicating the user is not signed in anymore
   }
+
+  String getCurrentUserId() {
+    return _currentUserId;
+  }
 }

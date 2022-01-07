@@ -1,3 +1,5 @@
+import 'package:project_demo/DTOs/StroreDTO.dart';
+import 'package:project_demo/DataLayer/StoreStorageProxy.dart';
 import 'package:project_demo/LogicLayer/DigitalWallet.dart';
 import 'package:project_demo/LogicLayer/OnlineStore.dart';
 import 'package:project_demo/LogicLayer/ShoppingBag.dart';
@@ -5,8 +7,10 @@ import 'package:project_demo/LogicLayer/StoreOwnerState.dart';
 import 'package:flutter/material.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:project_demo/DataLayer/user_authenticator.dart';
+import 'package:project_demo/Result/ResultInterface.dart';
 import 'package:project_demo/models/ModelProvider.dart';
 import 'package:project_demo/screens/landing_screen.dart';
+import 'package:tuple/tuple.dart';
 
 class User extends ChangeNotifier {
   String email;
@@ -54,5 +58,31 @@ class User extends ChangeNotifier {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<ResultInterface> openOnlineStore(StoreDTO store) async {
+    var res = await StoreStorageProxy().openOnlineStore(store);
+    if (!res.getTag()) return res; //failure
+    var tuple =
+        (res.getValue() as Tuple2); //<online store model, store owner id>
+    if (storeOwnerState == null) {
+      //we might alredy have a store, hence it won't be null
+      this.storeOwnerState = new StoreOwnerState(tuple.item2);
+    }
+    this.storeOwnerState.setOnlineStore(tuple.item1);
+    return res;
+  }
+
+  Future<ResultInterface> openPhysicalStore(StoreDTO store) async {
+    var res = await StoreStorageProxy().openPhysicalStore(store);
+    if (!res.getTag()) return res; //failure
+    var tuple =
+        (res.getValue() as Tuple2); //<physical store model, store owner id>
+    if (storeOwnerState == null) {
+      //we might alredy have a store, hence it won't be null
+      this.storeOwnerState = new StoreOwnerState(tuple.item2);
+    }
+    this.storeOwnerState.setPhysicalStore(tuple.item1);
+    return res;
   }
 }
