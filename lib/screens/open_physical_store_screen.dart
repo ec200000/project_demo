@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:project_demo/LogicLayer/Categories.dart';
 import 'package:project_demo/providers/physical_store.dart';
 import 'package:project_demo/providers/stores.dart';
+import 'package:project_demo/screens/tabs_screen.dart';
 import 'package:project_demo/widgets/image_input.dart';
 import '../screens/products_overview_screen.dart';
 import 'package:provider/provider.dart';
@@ -131,7 +132,7 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
     setState(() {
       _isLoading = false;
     });
-    Navigator.of(context).pop();
+    Navigator.of(context).pushReplacementNamed(TabsScreen.routeName);
   }
 
   @override

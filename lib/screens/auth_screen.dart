@@ -112,7 +112,7 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeIn,
-        height: 600,
+        height: 320,
         constraints: BoxConstraints(minHeight: 320),
         width: deviceSize.width * 0.75,
         padding: EdgeInsets.all(16.0),

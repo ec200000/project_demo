@@ -10,9 +10,7 @@ import '../screens/categories_screen.dart';
 class TabsScreen extends StatefulWidget {
   static const routeName = '/tabs-screen';
 
-  User user;
-
-  TabsScreen(User this.user);
+  TabsScreen();
 
   @override
   _TabsScreenState createState() => _TabsScreenState();
@@ -62,7 +60,7 @@ class _TabsScreenState extends State<TabsScreen> {
               Icons.settings_outlined,
             ),
             onPressed: () {
-              Navigator.of(context).pushNamed(SettingsScreen.routeName, arguments: widget.user);
+              Navigator.of(context).pushNamed(SettingsScreen.routeName);
             },
           ),
         ],
