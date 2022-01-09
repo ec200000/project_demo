@@ -1,4 +1,7 @@
+import 'dart:io';
 import 'dart:ui';
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:project_demo/DTOs/ProductDTO.dart';
 import 'package:project_demo/DTOs/StroreDTO.dart';
@@ -13,6 +16,8 @@ import 'package:project_demo/models/PhysicalStoreModel.dart';
 import 'package:project_demo/models/ProductModel.dart';
 import 'package:project_demo/models/StoreOwnerModel.dart';
 import 'package:tuple/tuple.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 
 class StoreStorageProxy {
   static final StoreStorageProxy _singleton = StoreStorageProxy._internal();
@@ -70,12 +75,16 @@ class StoreStorageProxy {
         phoneNumber: store.phoneNumber,
         address: store.address,
         categories: JsonEncoder.withIndent('  ').convert(store.categories),
-        operationHours:  JsonEncoder.withIndent('  ').convert(store.operationHours),
+        operationHours:
+            JsonEncoder.withIndent('  ').convert(store.operationHours),
         qrCode: await generateUniqueQRCode());
+    uploadPicture(store.image, physicalModel.id); // uploading the picture to s3
     StoreOwnerModel storeOwner = await UsersStorageProxy().getStoreOwnerState();
     if (storeOwner == null) {
       //the user will now have a store owner state
-      storeOwner = StoreOwnerModel(physicalStoreModel: physicalModel, storeOwnerModelPhysicalStoreModelId: physicalModel.id);
+      storeOwner = StoreOwnerModel(
+          physicalStoreModel: physicalModel,
+          storeOwnerModelPhysicalStoreModelId: physicalModel.id);
       await Amplify.DataStore.save(physicalModel);
       await Amplify.DataStore.save(storeOwner);
     } else if (!storeOwner.storeOwnerModelPhysicalStoreModelId
@@ -90,6 +99,33 @@ class StoreStorageProxy {
     }
     return new Ok("open physical store succsseded",
         Tuple2<PhysicalStoreModel, String>(physicalModel, storeOwner.id));
+  }
+
+  Future<File> createFileFromImageUrl(String url) async {
+    final http.Response responseData = await http.get(Uri.parse(url));
+    var uint8list = responseData.bodyBytes;
+    var buffer = uint8list.buffer;
+    ByteData byteData = ByteData.view(buffer);
+    var tempDir = await getTemporaryDirectory();
+    File file = await File('${tempDir.path}/img').writeAsBytes(
+        buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+    return file;
+  }
+
+  void uploadPicture(String url, String storeId) async {
+    try {
+      File img = await createFileFromImageUrl(url);
+      final UploadFileResult result = await Amplify.Storage.uploadFile(
+          local: img,
+          key: storeId,
+          onProgress: (progress) {
+            print("Fraction completed: " +
+                progress.getFractionCompleted().toString());
+          });
+      print('Successfully uploaded file: ${result.key}');
+    } on StorageException catch (e) {
+      print('Error uploading file: $e');
+    }
   }
 
   Future<OnlineStoreModel> fetchOnlineStore() async {
@@ -123,7 +159,7 @@ class StoreStorageProxy {
   Future<List<PhysicalStoreModel>> fetchAllPhysicalStores() async {
     try {
       List<PhysicalStoreModel> physicalStores =
-      await Amplify.DataStore.query(PhysicalStoreModel.classType);
+          await Amplify.DataStore.query(PhysicalStoreModel.classType);
       if (physicalStores.isEmpty) return null;
       return physicalStores; //only one physical store per user
     } on Exception catch (e) {
@@ -132,6 +168,17 @@ class StoreStorageProxy {
     return null;
   }
 
+  Future<List<OnlineStoreModel>> fetchAllOnlineStores() async {
+    try {
+      List<OnlineStoreModel> onlineStores =
+          await Amplify.DataStore.query(OnlineStoreModel.classType);
+      if (onlineStores.isEmpty) return null;
+      return onlineStores; //only one physical store per user
+    } on Exception catch (e) {
+      // TODO: write to log
+    }
+    return null;
+  }
 
   Future<ResultInterface> createProductForOnlineStore(
       ProductDTO productDTO) async {

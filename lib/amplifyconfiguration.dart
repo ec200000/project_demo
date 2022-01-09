@@ -90,6 +90,12 @@ const amplifyconfig = ''' {
                         "AuthMode": "AMAZON_COGNITO_USER_POOLS",
                         "ClientDatabasePrefix": "yrozproject_AMAZON_COGNITO_USER_POOLS"
                     }
+                },
+                "S3TransferUtility": {
+                    "Default": {
+                        "Bucket": "yroz-project-storage-dc3pt06t4o1wj155919-staging",
+                        "Region": "us-east-1"
+                    }
                 }
             }
         }
@@ -104,6 +110,15 @@ const amplifyconfig = ''' {
                     "authorizationType": "API_KEY",
                     "apiKey": "da2-6qwxs2x4ljfxfb6nosc5ourplm"
                 }
+            }
+        }
+    },
+    "storage": {
+        "plugins": {
+            "awsS3StoragePlugin": {
+                "bucket": "yroz-project-storage-dc3pt06t4o1wj155919-staging",
+                "region": "us-east-1",
+                "defaultAccessLevel": "guest"
             }
         }
     }

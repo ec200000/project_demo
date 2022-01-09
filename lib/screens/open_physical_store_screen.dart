@@ -1,6 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:project_demo/LogicLayer/Categories.dart';
 import 'package:project_demo/providers/physical_store.dart';
 import 'package:project_demo/providers/stores.dart';
@@ -9,12 +9,12 @@ import 'package:project_demo/widgets/image_input.dart';
 import '../screens/products_overview_screen.dart';
 import 'package:provider/provider.dart';
 
-
 class OpenPhysicalStoreScreen extends StatefulWidget {
   static const routeName = '/open-physical-store';
 
   @override
-  _OpenPhysicalStoreScreenState createState() => _OpenPhysicalStoreScreenState();
+  _OpenPhysicalStoreScreenState createState() =>
+      _OpenPhysicalStoreScreenState();
 }
 
 class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
@@ -51,13 +51,13 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
     if (_isInit) {
       final storeId = ModalRoute.of(context).settings.arguments as String;
       if (storeId != null) {
-        _editedStore =
-            Provider.of<Stores>(context, listen: false).findPhysicalStoreById(storeId);
+        _editedStore = Provider.of<Stores>(context, listen: false)
+            .findPhysicalStoreById(storeId);
         _initValues = {
           'name': _editedStore.name,
           'phoneNumber': _editedStore.phoneNumber,
           'address': _editedStore.address,
-          'imageUrl': '',
+          'imageUrl': _editedStore.image
         };
         _imageUrlController.text = _editedStore.image.toString();
       }
@@ -294,9 +294,10 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
                                         phoneNumber: _editedStore.phoneNumber,
                                         address: _editedStore.address,
                                         categories: _editedStore.categories,
-                                        operationHours: _editedStore.operationHours,
+                                        operationHours:
+                                            _editedStore.operationHours,
                                         qrCode: _editedStore.qrCode,
-                                        image: null); //TODO: use value
+                                        image: value); //TODO: use value
                                   },
                                 ),
                               ),

@@ -64,5 +64,12 @@
         }
       }
     }
+  },
+  "storage": {
+    "s3yrozprojectstoragedc3pt06t4o1wj": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }

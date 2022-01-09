@@ -11,7 +11,7 @@ import 'package:project_demo/screens/online_store_screen.dart';
 import 'package:project_demo/screens/open_online_store_screen.dart';
 import 'package:project_demo/screens/physical_store_screen.dart';
 import 'package:provider/provider.dart';
-
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 import 'amplifyconfiguration.dart';
 import 'providers/auth.dart';
 import 'providers/cart.dart';
@@ -50,6 +50,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     Amplify.addPlugin(AmplifyAuthCognito());
+    Amplify.addPlugin(AmplifyStorageS3());
     Amplify.addPlugin(AmplifyDataStore(modelProvider: ModelProvider.instance));
     Amplify.addPlugin(AmplifyAPI());
 
@@ -109,8 +110,10 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProxyProvider<User, Stores>(
           create: null,
-          update: (con, val, old) =>
-              Stores(val, old == null ? [] : old.onlineStores, old == null ? [] : old.physicalStores),
+          update: (con, val, old) => Stores(
+              val,
+              old == null ? [] : old.onlineStores,
+              old == null ? [] : old.physicalStores),
         ),
       ],
       child: Consumer<Auth>(
@@ -138,7 +141,8 @@ class _MyAppState extends State<MyApp> {
             CategoryScreen.routeName: (ctx) => CategoryScreen(),
             SettingsScreen.routeName: (ctx) => SettingsScreen(),
             PaymentScreen.routeName: (ctx) => PaymentScreen(),
-            OpenPhysicalStoreScreen.routeName: (ctx) => OpenPhysicalStoreScreen(),
+            OpenPhysicalStoreScreen.routeName: (ctx) =>
+                OpenPhysicalStoreScreen(),
             OpenOnlineStoreScreen.routeName: (ctx) => OpenOnlineStoreScreen(),
             ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),
             PhysicalStoreScreen.routeName: (ctx) => PhysicalStoreScreen(),

@@ -57,7 +57,7 @@ class Stores with ChangeNotifier {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text( error),
+                Text(error),
               ],
             ),
           ),
@@ -77,7 +77,7 @@ class Stores with ChangeNotifier {
   Future<void> addOnlineStore(OnlineStore store) async {
     try {
       StoreDTO dto = StoreDTO(store.name, store.phoneNumber, store.address,
-          store.categories, store.operationHours);
+          store.categories, store.operationHours, "");
       ResultInterface res = await user.openOnlineStore(dto);
       if (!res.getTag()) {
         _showMyDialog(res.getMessage());
@@ -93,7 +93,7 @@ class Stores with ChangeNotifier {
   Future<void> addPhysicalStore(PhysicalStore store) async {
     try {
       StoreDTO dto = StoreDTO(store.name, store.phoneNumber, store.address,
-          store.categories, store.operationHours);
+          store.categories, store.operationHours, store.image);
       ResultInterface res = await user.openPhysicalStore(dto);
       if (!res.getTag()) {
         _showMyDialog(res.getMessage());
