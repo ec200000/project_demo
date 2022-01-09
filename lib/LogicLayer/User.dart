@@ -1,7 +1,8 @@
+import 'dart:convert';
+
 import 'package:project_demo/DTOs/StroreDTO.dart';
 import 'package:project_demo/DataLayer/StoreStorageProxy.dart';
 import 'package:project_demo/LogicLayer/DigitalWallet.dart';
-import 'package:project_demo/LogicLayer/OnlineStore.dart';
 import 'package:project_demo/LogicLayer/ShoppingBag.dart';
 import 'package:project_demo/LogicLayer/StoreOwnerState.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,9 @@ import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:project_demo/DataLayer/user_authenticator.dart';
 import 'package:project_demo/Result/ResultInterface.dart';
 import 'package:project_demo/models/ModelProvider.dart';
+import 'package:project_demo/providers/online_store.dart';
 import 'package:project_demo/screens/landing_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tuple/tuple.dart';
 
 class User extends ChangeNotifier {
@@ -45,7 +48,7 @@ class User extends ChangeNotifier {
         userFromModel(currUser);
       }
       notifyListeners();
-      Navigator.of(context).pushNamed(LandingScreen.routeName);
+      Navigator.of(context).pushNamed(LandingScreen.routeName, arguments: this);
     } catch (e) {
       throw e;
     }

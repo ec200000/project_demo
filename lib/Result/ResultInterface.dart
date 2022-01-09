@@ -1,4 +1,4 @@
-abstract class ResultWithValue<T> {
+abstract class ResultInterface<T> {
   bool getTag();
   String getMessage();
   T getValue();

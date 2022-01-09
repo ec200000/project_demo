@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/LogicLayer/User.dart';
 import 'package:project_demo/screens/map_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/splash_screen.dart';
@@ -8,6 +9,10 @@ import '../screens/categories_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   static const routeName = '/tabs-screen';
+
+  User user;
+
+  TabsScreen(User this.user);
 
   @override
   _TabsScreenState createState() => _TabsScreenState();
@@ -57,7 +62,7 @@ class _TabsScreenState extends State<TabsScreen> {
               Icons.settings_outlined,
             ),
             onPressed: () {
-              Navigator.of(context).pushNamed(SettingsScreen.routeName);
+              Navigator.of(context).pushNamed(SettingsScreen.routeName, arguments: widget.user);
             },
           ),
         ],

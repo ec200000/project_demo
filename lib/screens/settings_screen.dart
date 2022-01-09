@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/screens/open_online_store_screen.dart';
 
 import '../dummy_data.dart';
 import '../widgets/category_item.dart';
-import '../screens/open_store_screen.dart';
+import '../screens/open_physical_store_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   static const routeName = '/settings';
@@ -125,12 +126,35 @@ class _SettingsPageState extends State<SettingsScreen> {
                         color: Colors.purple,
                       ),
                       title: !_storeOwner
-                          ? Text("Open Store")
-                          : Text("Edit Store"),
+                          ? Text("Open Online Store")
+                          : Text("Edit Online Store"),
                       trailing: Icon(Icons.keyboard_arrow_right),
                       onTap: () {
                         Navigator.of(context)
-                            .pushNamed(OpenStoreScreen.routeName);
+                            .pushNamed(OpenOnlineStoreScreen.routeName);
+                      },
+                    ),
+                  ]),
+                ),
+                const SizedBox(height: 20.0),
+                Card(
+                  elevation: 4.0,
+                  margin: const EdgeInsets.fromLTRB(32.0, 8.0, 32.0, 16.0),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      leading: Icon(
+                        Icons.store,
+                        color: Colors.purple,
+                      ),
+                      title: !_storeOwner
+                          ? Text("Open Physical Store")
+                          : Text("Edit Physical Store"),
+                      trailing: Icon(Icons.keyboard_arrow_right),
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(OpenPhysicalStoreScreen.routeName);
                       },
                     ),
                   ]),

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:project_demo/LogicLayer/OnlineStore.dart';
-import 'package:project_demo/LogicLayer/PhysicalStore.dart';
 import 'package:project_demo/models/OnlineStoreModel.dart';
 import 'package:project_demo/models/PhysicalStoreModel.dart';
+import 'package:project_demo/providers/online_store.dart';
+import 'package:project_demo/providers/physical_store.dart';
 
 class StoreOwnerState {
   String _storeOwnerID;
@@ -30,11 +30,11 @@ class StoreOwnerState {
     var categories = jsonDecode(physicalStoreModel.categories);
     var operationHours = jsonDecode(physicalStoreModel.operationHours);
     _physicalStore = new PhysicalStore(
-        physicalStoreModel.name,
-        physicalStoreModel.phoneNumber,
-        physicalStoreModel.address,
-        categories,
-        operationHours,
-        physicalStoreModel.qrCode);
+        name: physicalStoreModel.name,
+        phoneNumber: physicalStoreModel.phoneNumber,
+        address: physicalStoreModel.address,
+        categories: categories,
+        operationHours: operationHours,
+        qrCode: physicalStoreModel.qrCode);
   }
 }

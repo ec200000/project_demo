@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:project_demo/LogicLayer/User.dart';
 import 'package:project_demo/blocs/application_bloc.dart';
 import 'package:project_demo/models/ModelProvider.dart';
+import 'package:project_demo/providers/stores.dart';
 import 'package:project_demo/screens/online_store_screen.dart';
+import 'package:project_demo/screens/open_online_store_screen.dart';
 import 'package:project_demo/screens/physical_store_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +24,7 @@ import 'screens/settings_screen.dart';
 import 'screens/category_screen.dart';
 import 'screens/cart_screen.dart';
 import 'screens/edit_product_screen.dart';
-import 'screens/open_store_screen.dart';
+import 'screens/open_physical_store_screen.dart';
 import 'screens/product_detail_screen.dart';
 import 'screens/products_overview_screen.dart';
 import 'screens/splash_screen.dart';
@@ -105,6 +107,11 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
           create: (context) => User(),
         ),
+        ChangeNotifierProxyProvider<User, Stores>(
+          create: null,
+          update: (con, val, old) =>
+              Stores(val, old == null ? [] : old.onlineStores, old == null ? [] : old.physicalStores),
+        ),
       ],
       child: Consumer<Auth>(
         builder: (ctx, auth, _) => MaterialApp(
@@ -128,10 +135,10 @@ class _MyAppState extends State<MyApp> {
             CartScreen.routeName: (ctx) => CartScreen(),
             EditProductScreen.routeName: (ctx) => EditProductScreen(),
             CategoryScreen.routeName: (ctx) => CategoryScreen(),
-            TabsScreen.routeName: (ctx) => TabsScreen(),
             SettingsScreen.routeName: (ctx) => SettingsScreen(),
             PaymentScreen.routeName: (ctx) => PaymentScreen(),
-            OpenStoreScreen.routeName: (ctx) => OpenStoreScreen(),
+            OpenPhysicalStoreScreen.routeName: (ctx) => OpenPhysicalStoreScreen(),
+            OpenOnlineStoreScreen.routeName: (ctx) => OpenOnlineStoreScreen(),
             ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),
             PhysicalStoreScreen.routeName: (ctx) => PhysicalStoreScreen(),
             OnlineStoreScreen.routeName: (ctx) => OnlineStoreScreen(),

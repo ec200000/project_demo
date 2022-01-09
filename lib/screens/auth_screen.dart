@@ -11,8 +11,6 @@ import 'package:provider/provider.dart';
 
 import 'product_detail_screen.dart';
 
-enum AuthMode { Signup, Login }
-
 class AuthScreen extends StatelessWidget {
   static const routeName = '/auth';
 
@@ -66,10 +64,8 @@ class AuthCard extends StatefulWidget {
   _AuthCardState createState() => _AuthCardState();
 }
 
-class _AuthCardState extends State<AuthCard>
-    with SingleTickerProviderStateMixin {
+class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin {
   final GlobalKey<FormState> _formKey = GlobalKey();
-  AuthMode _authMode = AuthMode.Login;
   var _isLoading = false;
   AnimationController _controller;
   Animation<Size> _heightAnimation;
@@ -116,8 +112,8 @@ class _AuthCardState extends State<AuthCard>
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeIn,
-        height: _authMode == AuthMode.Signup ? 600 : 300,
-        constraints: BoxConstraints(minHeight: _authMode == AuthMode.Signup ? 320 : 260),
+        height: 600,
+        constraints: BoxConstraints(minHeight: 320),
         width: deviceSize.width * 0.75,
         padding: EdgeInsets.all(16.0),
         child: Form(

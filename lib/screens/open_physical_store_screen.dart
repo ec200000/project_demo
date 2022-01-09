@@ -1,39 +1,39 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:project_demo/providers/physical_store.dart';
+import 'package:project_demo/providers/stores.dart';
 import 'package:project_demo/widgets/image_input.dart';
 import '../screens/products_overview_screen.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/product.dart';
-import '../providers/products.dart';
 
-class OpenStoreScreen extends StatefulWidget {
-  static const routeName = '/open-store';
+class OpenPhysicalStoreScreen extends StatefulWidget {
+  static const routeName = '/open-physical-store';
 
   @override
-  _OpenStoreScreenState createState() => _OpenStoreScreenState();
+  _OpenPhysicalStoreScreenState createState() => _OpenPhysicalStoreScreenState();
 }
 
-class _OpenStoreScreenState extends State<OpenStoreScreen> {
+class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
   final _priceFocusNode = FocusNode();
   final _descriptionFocusNode = FocusNode();
   final _imageUrlController = TextEditingController();
   final _imageUrlFocusNode = FocusNode();
   final _form = GlobalKey<FormState>();
   File _pickedImage;
-  var _editedProduct = Product(
-    id: null,
-    title: '',
-    price: 0,
-    description: '',
-    imageUrl: '',
-  );
+  var _editedStore = PhysicalStore(
+      name: "",
+      phoneNumber: "",
+      address: "",
+      categories: [],
+      operationHours: {},
+      qrCode: null,
+      image: null);
   var _initValues = {
-    'title': '',
-    'description': '',
-    'price': '',
-    'imageUrl': '',
+    'name': '',
+    'phoneNumber': '',
+    'address': '',
   };
   var _isInit = true;
   var _isLoading = false;
@@ -47,18 +47,17 @@ class _OpenStoreScreenState extends State<OpenStoreScreen> {
   @override
   void didChangeDependencies() {
     if (_isInit) {
-      final productId = ModalRoute.of(context).settings.arguments as String;
-      if (productId != null) {
-        _editedProduct =
-            Provider.of<Products>(context, listen: false).findById(productId);
+      final storeId = ModalRoute.of(context).settings.arguments as String;
+      if (storeId != null) {
+        _editedStore =
+            Provider.of<Stores>(context, listen: false).findPhysicalStoreById(storeId);
         _initValues = {
-          'name': _editedProduct.title,
-          'description': _editedProduct.description,
-          'address': _editedProduct.price.toString(),
-          // 'imageUrl': _editedProduct.imageUrl,
+          'name': _editedStore.name,
+          'phoneNumber': _editedStore.phoneNumber,
+          'address': _editedStore.address,
           'imageUrl': '',
         };
-        _imageUrlController.text = _editedProduct.imageUrl;
+        _imageUrlController.text = _editedStore.image.toString();
       }
     }
     _isInit = false;
@@ -107,13 +106,13 @@ class _OpenStoreScreenState extends State<OpenStoreScreen> {
     setState(() {
       _isLoading = true;
     });
-    if (_editedProduct.id != null) {
-      await Provider.of<Products>(context, listen: false)
-          .updateProduct(_editedProduct.id, _editedProduct);
+    if (_editedStore.id != null) {
+      await Provider.of<Stores>(context, listen: false)
+          .updatePhysicalStore(_editedStore.id, _editedStore);
     } else {
       try {
-        await Provider.of<Products>(context, listen: false)
-            .addProduct(_editedProduct);
+        await Provider.of<Stores>(context, listen: false)
+            .addPhysicalStore(_editedStore);
       } catch (error) {
         await showDialog(
           context: context,
@@ -176,13 +175,14 @@ class _OpenStoreScreenState extends State<OpenStoreScreen> {
                         return null;
                       },
                       onSaved: (value) {
-                        _editedProduct = Product(
-                            title: value,
-                            price: _editedProduct.price,
-                            description: _editedProduct.description,
-                            imageUrl: _editedProduct.imageUrl,
-                            id: _editedProduct.id,
-                            isFavorite: _editedProduct.isFavorite);
+                        _editedStore = PhysicalStore(
+                            name: value,
+                            phoneNumber: _editedStore.phoneNumber,
+                            address: _editedStore.address,
+                            categories: _editedStore.categories,
+                            operationHours: _editedStore.operationHours,
+                            qrCode: _editedStore.qrCode,
+                            image: _editedStore.image);
                       },
                     ),
                     TextFormField(
@@ -202,39 +202,40 @@ class _OpenStoreScreenState extends State<OpenStoreScreen> {
                         return null;
                       },
                       onSaved: (value) {
-                        _editedProduct = Product(
-                            title: _editedProduct.title,
-                            price: double.parse(value),
-                            description: _editedProduct.description,
-                            imageUrl: _editedProduct.imageUrl,
-                            id: _editedProduct.id,
-                            isFavorite: _editedProduct.isFavorite);
+                        _editedStore = PhysicalStore(
+                            name: _editedStore.name,
+                            phoneNumber: _editedStore.phoneNumber,
+                            address: value,
+                            categories: _editedStore.categories,
+                            operationHours: _editedStore.operationHours,
+                            qrCode: _editedStore.qrCode,
+                            image: _editedStore.image);
                       },
                     ),
                     TextFormField(
-                      initialValue: _initValues['description'],
-                      decoration: InputDecoration(labelText: 'Description'),
+                      initialValue: _initValues['phoneNumber'],
+                      decoration: InputDecoration(labelText: 'phoneNumber'),
                       maxLines: 3,
                       keyboardType: TextInputType.multiline,
                       focusNode: _descriptionFocusNode,
                       validator: (value) {
                         if (value.isEmpty) {
-                          return 'Please enter a description.';
+                          return 'Please enter a phone Number.';
                         }
-                        if (value.length < 10) {
-                          return 'Should be at least 10 characters long.';
+                        if (value.length < 8) {
+                          return 'Should be at least 8 characters long.';
                         }
                         return null;
                       },
                       onSaved: (value) {
-                        _editedProduct = Product(
-                          title: _editedProduct.title,
-                          price: _editedProduct.price,
-                          description: value,
-                          imageUrl: _editedProduct.imageUrl,
-                          id: _editedProduct.id,
-                          isFavorite: _editedProduct.isFavorite,
-                        );
+                        _editedStore = PhysicalStore(
+                            name: _editedStore.name,
+                            phoneNumber: value,
+                            address: _editedStore.address,
+                            categories: _editedStore.categories,
+                            operationHours: _editedStore.operationHours,
+                            qrCode: _editedStore.qrCode,
+                            image: _editedStore.image);
                       },
                     ),
                     _pickedImage == null
@@ -290,14 +291,14 @@ class _OpenStoreScreenState extends State<OpenStoreScreen> {
                                     return null;
                                   },
                                   onSaved: (value) {
-                                    _editedProduct = Product(
-                                      title: _editedProduct.title,
-                                      price: _editedProduct.price,
-                                      description: _editedProduct.description,
-                                      imageUrl: value,
-                                      id: _editedProduct.id,
-                                      isFavorite: _editedProduct.isFavorite,
-                                    );
+                                    _editedStore = PhysicalStore(
+                                        name: _editedStore.name,
+                                        phoneNumber: value,
+                                        address: _editedStore.address,
+                                        categories: _editedStore.categories,
+                                        operationHours: _editedStore.operationHours,
+                                        qrCode: _editedStore.qrCode,
+                                        image: null); //TODO: use value
                                   },
                                 ),
                               ),
@@ -306,15 +307,6 @@ class _OpenStoreScreenState extends State<OpenStoreScreen> {
                         : const SizedBox(height: 1.0),
                     ImageInput(_selectImage, _unselectImage),
                     const SizedBox(height: 50.0),
-                    RaisedButton(
-                      color: Theme.of(context).primaryColor,
-                      textColor: Colors.black,
-                      child: Text("Add Products"),
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed(ProductsOverviewScreen.routeName);
-                      },
-                    ),
                   ],
                 ),
               ),
