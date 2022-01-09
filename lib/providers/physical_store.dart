@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:project_demo/LogicLayer/Categories.dart';
@@ -8,7 +8,7 @@ class PhysicalStore with ChangeNotifier{
   String name;
   String phoneNumber;
   String address;
-  List<Categories> categories;
+  List<String> categories;
   Map<int, DateTime> operationHours;
   String qrCode;
   File image;

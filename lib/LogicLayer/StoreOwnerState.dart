@@ -22,8 +22,8 @@ class StoreOwnerState {
         onlineStoreModel.name,
         onlineStoreModel.phoneNumber,
         onlineStoreModel.address,
-        categories,
-        operationHours);
+        List<String>.from(categories),
+        Map<int, DateTime>.from(operationHours));
   }
 
   void setPhysicalStore(PhysicalStoreModel physicalStoreModel) {
@@ -33,8 +33,8 @@ class StoreOwnerState {
         name: physicalStoreModel.name,
         phoneNumber: physicalStoreModel.phoneNumber,
         address: physicalStoreModel.address,
-        categories: categories,
-        operationHours: operationHours,
+        categories: List<String>.from(categories),
+        operationHours: Map<int, DateTime>.from(operationHours),
         qrCode: physicalStoreModel.qrCode);
   }
 }

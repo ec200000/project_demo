@@ -65,20 +65,19 @@ class StoreStorageProxy {
   }
 
   Future<ResultInterface> openPhysicalStore(StoreDTO store) async {
-    PhysicalStoreModel physicalStoreModel = PhysicalStoreModel(
+    PhysicalStoreModel physicalModel = PhysicalStoreModel(
         name: store.name,
         phoneNumber: store.phoneNumber,
         address: store.address,
-        categories: jsonEncode(store.categories),
-        operationHours: jsonEncode(store.operationHours),
+        categories: JsonEncoder.withIndent('  ').convert(store.categories),
+        operationHours:  JsonEncoder.withIndent('  ').convert(store.operationHours),
         qrCode: await generateUniqueQRCode());
     StoreOwnerModel storeOwner = await UsersStorageProxy().getStoreOwnerState();
     if (storeOwner == null) {
       //the user will now have a store owner state
-      StoreOwnerModel storeOwnerModel =
-          StoreOwnerModel(physicalStoreModel: physicalStoreModel);
-      await Amplify.DataStore.save(physicalStoreModel);
-      await Amplify.DataStore.save(storeOwnerModel);
+      storeOwner = StoreOwnerModel(physicalStoreModel: physicalModel, storeOwnerModelPhysicalStoreModelId: physicalModel.id);
+      await Amplify.DataStore.save(physicalModel);
+      await Amplify.DataStore.save(storeOwner);
     } else if (!storeOwner.storeOwnerModelPhysicalStoreModelId
         .isEmpty) // already have an physical store
     {
@@ -87,10 +86,10 @@ class StoreStorageProxy {
           "User already has physical store - only one is allowed!", "");
     } else //we have a store owner state but not an online store
     {
-      UsersStorageProxy().addPhysicalStoreToStoreOwnerState(physicalStoreModel);
+      UsersStorageProxy().addPhysicalStoreToStoreOwnerState(physicalModel);
     }
     return new Ok("open physical store succsseded",
-        Tuple2<PhysicalStoreModel, String>(physicalStoreModel, storeOwner.id));
+        Tuple2<PhysicalStoreModel, String>(physicalModel, storeOwner.id));
   }
 
   Future<OnlineStoreModel> fetchOnlineStore() async {
@@ -116,10 +115,23 @@ class StoreStorageProxy {
       if (physicalStores.isEmpty) return null;
       return physicalStores.first; //only one physical store per user
     } on Exception catch (e) {
-      // TODO: wtire to log
+      // TODO: write to log
     }
     return null;
   }
+
+  Future<List<PhysicalStoreModel>> fetchAllPhysicalStores() async {
+    try {
+      List<PhysicalStoreModel> physicalStores =
+      await Amplify.DataStore.query(PhysicalStoreModel.classType);
+      if (physicalStores.isEmpty) return null;
+      return physicalStores; //only one physical store per user
+    } on Exception catch (e) {
+      // TODO: write to log
+    }
+    return null;
+  }
+
 
   Future<ResultInterface> createProductForOnlineStore(
       ProductDTO productDTO) async {

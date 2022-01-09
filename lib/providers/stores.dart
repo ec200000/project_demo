@@ -48,13 +48,39 @@ class Stores with ChangeNotifier {
         orElse: () => null);
   }
 
+  Future<void> _showMyDialog(String error) async {
+    return showDialog<void>(
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Error'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text( error),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Approve'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Future<void> addOnlineStore(OnlineStore store) async {
     try {
       StoreDTO dto = StoreDTO(store.name, store.phoneNumber, store.address,
           store.categories, store.operationHours);
       ResultInterface res = await user.openOnlineStore(dto);
       if (!res.getTag()) {
-        //POPUP of exception
+        _showMyDialog(res.getMessage());
       }
       _onlineStores.add(user.storeOwnerState.onlineStore);
       notifyListeners();
@@ -68,9 +94,9 @@ class Stores with ChangeNotifier {
     try {
       StoreDTO dto = StoreDTO(store.name, store.phoneNumber, store.address,
           store.categories, store.operationHours);
-      ResultInterface res = await user.openOnlineStore(dto);
+      ResultInterface res = await user.openPhysicalStore(dto);
       if (!res.getTag()) {
-        //POPUP of exception
+        _showMyDialog(res.getMessage());
       }
       _physicalStores.add(user.storeOwnerState.physicalStore);
       notifyListeners();

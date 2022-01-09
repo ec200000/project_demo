@@ -1,10 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/DataLayer/StoreStorageProxy.dart';
+import 'package:project_demo/models/PhysicalStoreModel.dart';
+import 'package:project_demo/screens/splash_screen.dart';
 import '../widgets/store_item.dart';
 
 import '../dummy_data.dart';
 import '../widgets/category_item.dart';
 
-class CategoriesScreen extends StatelessWidget {
+class CategoriesScreen extends StatefulWidget {
+
+  @override
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
+
+}
+
+class _CategoriesScreenState extends State<CategoriesScreen> {
+  List<PhysicalStoreModel> DUMMY_STORES;
+
+  @override
+  void initState() {
+    // Provider.of<Products>(context).fetchAndSetProducts(); // WON'T WORK!
+    // Future.delayed(Duration.zero).then((_) {
+    //   Provider.of<Products>(context).fetchAndSetProducts();
+    // });
+    super.initState();
+    () async {
+      DUMMY_STORES = await StoreStorageProxy().fetchAllPhysicalStores();
+      setState(() {
+        // Update your UI with the desired changes.
+      });
+    } ();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -51,10 +79,10 @@ class CategoriesScreen extends StatelessWidget {
             child: GridView(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(25),
-              children: [DUMMY_STORES.map(
+              children: DUMMY_STORES == null ? [SplashScreen()] : [DUMMY_STORES.map(
                     (storeData) => StoreItem(
                       storeData.id,
-                      storeData.title,
+                      storeData.name,
                       storeData.address,
                 ),
               ).toList()

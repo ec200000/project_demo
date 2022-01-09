@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/DataLayer/StoreStorageProxy.dart';
+import 'package:project_demo/models/ModelProvider.dart';
 import 'package:project_demo/widgets/store_item.dart';
 import '../dummy_data.dart';
 import '../widgets/credit_card.dart';
@@ -30,6 +32,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   var _showOnlyFavorites = false;
   var _isInit = true;
   var _isLoading = false;
+  List<PhysicalStoreModel> DUMMY_STORES;
 
   @override
   void initState() {
@@ -38,6 +41,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
     //   Provider.of<Products>(context).fetchAndSetProducts();
     // });
     super.initState();
+        () async {
+      DUMMY_STORES = await StoreStorageProxy().fetchAllPhysicalStores();
+      setState(() {
+        // Update your UI with the desired changes.
+      });
+    } ();
   }
 
   @override
@@ -59,7 +68,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title, ),
@@ -74,7 +83,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         children: [DUMMY_STORES.map(
               (storeData) => StoreItem(
             storeData.id,
-            storeData.title,
+            storeData.name,
             storeData.address,
           ),
         ).toList()

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:project_demo/LogicLayer/Categories.dart';
 import 'package:project_demo/providers/physical_store.dart';
 import 'package:project_demo/providers/stores.dart';
 import 'package:project_demo/widgets/image_input.dart';
@@ -26,7 +27,7 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
       name: "",
       phoneNumber: "",
       address: "",
-      categories: [],
+      categories: ["Sport"],
       operationHours: {},
       qrCode: null,
       image: null);
@@ -98,10 +99,6 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
   }
 
   Future<void> _saveForm() async {
-    final isValid = _form.currentState.validate();
-    if (!isValid) {
-      return;
-    }
     _form.currentState.save();
     setState(() {
       _isLoading = true;
@@ -118,7 +115,7 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
           context: context,
           builder: (ctx) => AlertDialog(
             title: Text('An error occurred!'),
-            content: Text('Something went wrong.'),
+            content: Text(error.toString()),
             actions: <Widget>[
               FlatButton(
                 child: Text('Okay'),
@@ -172,6 +169,9 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
                         if (value.isEmpty) {
                           return 'Please provide a value.';
                         }
+                        if (value.length < 8) {
+                          return 'Should be at least 8 characters long.';
+                        }
                         return null;
                       },
                       onSaved: (value) {
@@ -186,15 +186,38 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
                       },
                     ),
                     TextFormField(
-                      initialValue: _initValues['address'],
-                      decoration: InputDecoration(labelText: 'Address'),
+                      initialValue: _initValues['phoneNumber'],
+                      decoration: InputDecoration(labelText: 'phoneNumber'),
                       textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.phone,
                       focusNode: _priceFocusNode,
                       onFieldSubmitted: (_) {
                         FocusScope.of(context)
                             .requestFocus(_descriptionFocusNode);
                       },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter a phone Number.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedStore = PhysicalStore(
+                            name: _editedStore.name,
+                            phoneNumber: value,
+                            address: _editedStore.address,
+                            categories: _editedStore.categories,
+                            operationHours: _editedStore.operationHours,
+                            qrCode: _editedStore.qrCode,
+                            image: _editedStore.image);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['address'],
+                      decoration: InputDecoration(labelText: 'Address'),
+                      maxLines: 3,
+                      keyboardType: TextInputType.multiline,
+                      focusNode: _descriptionFocusNode,
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'Please enter an address.';
@@ -206,32 +229,6 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
                             name: _editedStore.name,
                             phoneNumber: _editedStore.phoneNumber,
                             address: value,
-                            categories: _editedStore.categories,
-                            operationHours: _editedStore.operationHours,
-                            qrCode: _editedStore.qrCode,
-                            image: _editedStore.image);
-                      },
-                    ),
-                    TextFormField(
-                      initialValue: _initValues['phoneNumber'],
-                      decoration: InputDecoration(labelText: 'phoneNumber'),
-                      maxLines: 3,
-                      keyboardType: TextInputType.multiline,
-                      focusNode: _descriptionFocusNode,
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'Please enter a phone Number.';
-                        }
-                        if (value.length < 8) {
-                          return 'Should be at least 8 characters long.';
-                        }
-                        return null;
-                      },
-                      onSaved: (value) {
-                        _editedStore = PhysicalStore(
-                            name: _editedStore.name,
-                            phoneNumber: value,
-                            address: _editedStore.address,
                             categories: _editedStore.categories,
                             operationHours: _editedStore.operationHours,
                             qrCode: _editedStore.qrCode,
@@ -293,7 +290,7 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
                                   onSaved: (value) {
                                     _editedStore = PhysicalStore(
                                         name: _editedStore.name,
-                                        phoneNumber: value,
+                                        phoneNumber: _editedStore.phoneNumber,
                                         address: _editedStore.address,
                                         categories: _editedStore.categories,
                                         operationHours: _editedStore.operationHours,
