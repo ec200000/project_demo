@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_demo/DTOs/StroreDTO.dart';
 import 'package:project_demo/LogicLayer/User.dart';
+import 'package:project_demo/Result/ResultInterface.dart';
 import 'package:project_demo/providers/online_store.dart';
 import 'package:project_demo/providers/physical_store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -49,10 +50,13 @@ class Stores with ChangeNotifier {
 
   Future<void> addOnlineStore(OnlineStore store) async {
     try {
-      StoreDTO dto = StoreDTO(store.name, store.phoneNumber, store.address, store.categories, store.operationHours)
-      user.openOnlineStore(dto);
-      // TODO: iris use resultInterface
-      _onlineStores.add(newProduct);
+      StoreDTO dto = StoreDTO(store.name, store.phoneNumber, store.address,
+          store.categories, store.operationHours);
+      ResultInterface res = await user.openOnlineStore(dto);
+      if (!res.getTag()) {
+        //POPUP of exception
+      }
+      _onlineStores.add(user.storeOwnerState.onlineStore);
       notifyListeners();
     } catch (error) {
       print(error);
@@ -62,10 +66,13 @@ class Stores with ChangeNotifier {
 
   Future<void> addPhysicalStore(PhysicalStore store) async {
     try {
-      StoreDTO dto = StoreDTO(store.name, store.phoneNumber, store.address, store.categories, store.operationHours)
-      user.openOnlineStore(dto);
-      // TODO: iris use resultInterface
-      _physicalStores.add(newProduct);
+      StoreDTO dto = StoreDTO(store.name, store.phoneNumber, store.address,
+          store.categories, store.operationHours);
+      ResultInterface res = await user.openOnlineStore(dto);
+      if (!res.getTag()) {
+        //POPUP of exception
+      }
+      _physicalStores.add(user.storeOwnerState.physicalStore);
       notifyListeners();
     } catch (error) {
       print(error);
@@ -93,7 +100,5 @@ class Stores with ChangeNotifier {
     }
   }
 
-  Future<void> deleteStore(String id) async {
-
-  }
+  Future<void> deleteStore(String id) async {}
 }

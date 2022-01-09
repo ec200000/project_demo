@@ -12,13 +12,13 @@ class StoreOwnerState {
 
   StoreOwnerState(this._storeOwnerID);
 
-  OnlineStore _onlineStore;
-  PhysicalStore _physicalStore;
+  OnlineStore onlineStore;
+  PhysicalStore physicalStore;
 
   void setOnlineStore(OnlineStoreModel onlineStoreModel) {
     var categories = jsonDecode(onlineStoreModel.categories);
     var operationHours = jsonDecode(onlineStoreModel.operationHours);
-    _onlineStore = new OnlineStore(
+    onlineStore = new OnlineStore(
         onlineStoreModel.name,
         onlineStoreModel.phoneNumber,
         onlineStoreModel.address,
@@ -29,7 +29,7 @@ class StoreOwnerState {
   void setPhysicalStore(PhysicalStoreModel physicalStoreModel) {
     var categories = jsonDecode(physicalStoreModel.categories);
     var operationHours = jsonDecode(physicalStoreModel.operationHours);
-    _physicalStore = new PhysicalStore(
+    physicalStore = new PhysicalStore(
         name: physicalStoreModel.name,
         phoneNumber: physicalStoreModel.phoneNumber,
         address: physicalStoreModel.address,
