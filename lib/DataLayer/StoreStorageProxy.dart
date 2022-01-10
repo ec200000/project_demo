@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:project_demo/DTOs/PhysicalStoreDTO.dart';
 import 'package:project_demo/DataLayer/user_authenticator.dart';
 import 'package:project_demo/models/UserModel.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -101,7 +102,8 @@ class StoreStorageProxy {
         operationHours:
             JsonEncoder.withIndent('  ').convert(store.operationHours),
         qrCode: await generateUniqueQRCode());
-    uploadPicture(store.image, physicalModel.id); // uploading the picture to s3
+    await uploadPicture(
+        store.image, physicalModel.id); // uploading the picture to s3
     StoreOwnerModel storeOwner = await UsersStorageProxy().getStoreOwnerState();
     if (storeOwner == null) {
       //the user will now have a store owner state
@@ -155,7 +157,7 @@ class StoreStorageProxy {
     return file;
   }
 
-  void uploadPicture(String url, String storeId) async {
+  Future<void> uploadPicture(String url, String storeId) async {
     try {
       File img = await createFileFromImageUrl(url);
       final UploadFileResult result = await Amplify.Storage.uploadFile(
@@ -199,16 +201,49 @@ class StoreStorageProxy {
     return null;
   }
 
-  Future<List<PhysicalStoreModel>> fetchAllPhysicalStores() async {
+  Future<List<PhysicalStoreDTO>> fetchAllPhysicalStores() async {
     try {
       List<PhysicalStoreModel> physicalStores =
           await Amplify.DataStore.query(PhysicalStoreModel.classType);
       if (physicalStores.isEmpty) return null;
-      return physicalStores; //only one physical store per user
+
+      return convertPhysicalStoreModelToDTO(
+          physicalStores); //only one physical store per user
     } on Exception catch (e) {
       // TODO: write to log
     }
     return null;
+  }
+
+  Future<String> getDownloadUrl(String keyName) async {
+    try {
+      final GetUrlResult result = await Amplify.Storage.getUrl(key: keyName);
+      print('Got URL: ${result.url}');
+      return result.url;
+    } on StorageException catch (e) {
+      print('Error getting download URL: $e');
+      //TODO: write to log
+    }
+    return null;
+  }
+
+  Future<List<PhysicalStoreDTO>> convertPhysicalStoreModelToDTO(
+      List<PhysicalStoreModel> physicalStores) async {
+    List<PhysicalStoreDTO> lst = [];
+    for (PhysicalStoreModel model in physicalStores) {
+      String url = await getDownloadUrl(model.id);
+      PhysicalStoreDTO dto = PhysicalStoreDTO(
+          model.name,
+          model.address,
+          model.phoneNumber,
+          jsonDecode(model.categories).cast<String>(),
+          jsonDecode(model.operationHours).cast<int, DateTime>(),
+          url,
+          model.qrCode);
+      await dto.initImageFile();
+      lst.add(dto);
+    }
+    return lst;
   }
 
   Future<List<OnlineStoreModel>> fetchAllOnlineStores() async {

@@ -14,23 +14,23 @@ class PhysicalStoreScreen extends StatefulWidget {
 
   String title = "";
   String address = "";
-  String image = "";
+  MemoryImage image = null;
 
   @override
   _PhysicalStoreScreenState createState() => _PhysicalStoreScreenState();
 
   Widget wrapWithMaterial() => MaterialApp(
-    home: MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(
-          value: Cart(),
+        home: MultiProvider(
+          providers: [
+            ChangeNotifierProvider.value(
+              value: Cart(),
+            ),
+          ],
+          child: Scaffold(
+            body: this,
+          ),
         ),
-      ],
-      child: Scaffold(
-        body: this,
-      ),
-    ),
-  );
+      );
 }
 
 class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
@@ -42,11 +42,11 @@ class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
   @override
   void didChangeDependencies() {
     final routeArgs =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
+        ModalRoute.of(context).settings.arguments as Map<String, Object>;
     if (routeArgs != null) {
-      widget.title = routeArgs['title'];
-      widget.address = routeArgs['address'];
-      widget.image = routeArgs['image'];
+      widget.title = routeArgs['title'] as String;
+      widget.address = routeArgs['address'] as String;
+      widget.image = routeArgs['image'] as MemoryImage;
     }
     super.didChangeDependencies();
   }
@@ -55,7 +55,9 @@ class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("" + widget.title, ),
+        title: Text(
+          "" + widget.title,
+        ),
         actions: [
           Consumer<Cart>(
             builder: (_, cart, ch) => Badge(
@@ -77,7 +79,14 @@ class _PhysicalStoreScreenState extends State<PhysicalStoreScreen> {
         child: Column(
           children: [
             Center(
-              child: widget.image != "" ? Image.asset(widget.image) : null,
+              child: Container(
+                width: 150,
+                height: 150,
+                decoration: BoxDecoration(
+                  image: new DecorationImage(
+                      fit: BoxFit.cover, image: widget.image),
+                ),
+              ),
             ),
             ListTile(
               title: Text(

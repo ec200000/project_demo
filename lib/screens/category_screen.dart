@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/DTOs/PhysicalStoreDTO.dart';
 import 'package:project_demo/DataLayer/StoreStorageProxy.dart';
 import 'package:project_demo/models/ModelProvider.dart';
 import 'package:project_demo/widgets/store_item.dart';
@@ -32,7 +33,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   var _showOnlyFavorites = false;
   var _isInit = true;
   var _isLoading = false;
-  List<PhysicalStoreModel> DUMMY_STORES;
+  List<PhysicalStoreDTO> DUMMY_STORES;
 
   @override
   void initState() {
@@ -41,17 +42,18 @@ class _CategoryScreenState extends State<CategoryScreen> {
     //   Provider.of<Products>(context).fetchAndSetProducts();
     // });
     super.initState();
-        () async {
+    () async {
       DUMMY_STORES = await StoreStorageProxy().fetchAllPhysicalStores();
       setState(() {
         // Update your UI with the desired changes.
       });
-    } ();
+    }();
   }
 
   @override
   void didChangeDependencies() {
-    final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
+    final routeArgs =
+        ModalRoute.of(context).settings.arguments as Map<String, String>;
     widget.title = routeArgs['title'];
     if (_isInit) {
       setState(() {
@@ -68,33 +70,38 @@ class _CategoryScreenState extends State<CategoryScreen> {
   }
 
   @override
-  Widget build(BuildContext context)  {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title, ),
+        title: Text(
+          widget.title,
+        ),
       ),
       body: _isLoading
           ? Center(
-        child: CircularProgressIndicator(),
-      )
+              child: CircularProgressIndicator(),
+            )
           : GridView(
-        scrollDirection: Axis.vertical,
-        padding: const EdgeInsets.all(25),
-        children: [DUMMY_STORES.map(
-              (storeData) => StoreItem(
-            storeData.id,
-            storeData.name,
-            storeData.address,
-          ),
-        ).toList()
-          ,].expand((i) => i).toList(),
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-        ),
-      ),
+              scrollDirection: Axis.vertical,
+              padding: const EdgeInsets.all(25),
+              children: [
+                DUMMY_STORES
+                    .map(
+                      (storeData) => StoreItem(
+                        storeData.imageFile,
+                        storeData.name,
+                        storeData.address,
+                      ),
+                    )
+                    .toList(),
+              ].expand((i) => i).toList(),
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200,
+                childAspectRatio: 3 / 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+              ),
+            ),
     );
   }
 }
