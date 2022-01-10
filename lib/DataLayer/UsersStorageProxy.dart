@@ -31,7 +31,39 @@ class UsersStorageProxy {
       print("Created user and saved to DB");
       return userModel;
     }
-    return users.first;
+    UserModel user = users.first;
+    List<StoreOwnerModel> storeOwners = await Amplify.DataStore.query(
+        StoreOwnerModel.classType,
+        where: StoreOwnerModel.ID.eq(user.userModelStoreOwnerModelId));
+    StoreOwnerModel storeOwner = null;
+    if (!storeOwners.isEmpty) {
+      storeOwner = storeOwners.first;
+    }
+
+    List<DigitalWalletModel> digitalWallet = await Amplify.DataStore.query(
+        DigitalWalletModel.classType,
+        where: DigitalWalletModel.ID.eq(user.userModelDigitalWalletModelId));
+    DigitalWalletModel wallet = null;
+    if (!digitalWallet.isEmpty) {
+      wallet = digitalWallet.first;
+    }
+
+    List<ShoppingBagModel> shoppingBags = await Amplify.DataStore.query(
+        ShoppingBagModel.classType,
+        where: ShoppingBagModel.USERMODELID.eq(user.id));
+
+    UserModel fullUser = user.copyWith(
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        creditCards: user.creditCards,
+        bankAccount: user.bankAccount,
+        shoppingBagModel: shoppingBags,
+        storeOwnerModel: storeOwner,
+        digitalWalletModel: wallet,
+        userModelStoreOwnerModelId: storeOwner.id,
+        userModelDigitalWalletModelId: wallet.id);
+    return fullUser;
   }
 
   Future<UserModel> getUser(String email) async {

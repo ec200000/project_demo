@@ -43,13 +43,11 @@ class StoreStorageProxy {
       storeOwner = StoreOwnerModel(
           onlineStoreModel: onlineStoreModel,
           storeOwnerModelOnlineStoreModelId: onlineStoreModel.id);
-      List<UserModel> userModels = await Amplify.DataStore.query(
-          UserModel.classType,
-          where: UserModel.ID.eq(UserAuthenticator().getCurrentUserId()));
-      if (userModels.isEmpty) {
+      UserModel oldUserModel = await UsersStorageProxy()
+          .getUser(UserAuthenticator().getCurrentUserId());
+      if (oldUserModel == null) {
         return new Failure("no such user exists in the system!", null);
       }
-      UserModel oldUserModel = userModels.first;
       UserModel newUserModel = oldUserModel.copyWith(
           id: oldUserModel.id,
           email: oldUserModel.email,
@@ -110,13 +108,12 @@ class StoreStorageProxy {
       storeOwner = StoreOwnerModel(
           physicalStoreModel: physicalModel,
           storeOwnerModelPhysicalStoreModelId: physicalModel.id);
-      List<UserModel> userModels = await Amplify.DataStore.query(
-          UserModel.classType,
-          where: UserModel.ID.eq(UserAuthenticator().getCurrentUserId()));
-      if (userModels.isEmpty) {
+      UserModel oldUserModel = await UsersStorageProxy()
+          .getUser(UserAuthenticator().getCurrentUserId());
+      if (oldUserModel == null) {
         return new Failure("no such user exists in the system!", null);
       }
-      UserModel oldUserModel = userModels.first;
+
       UserModel newUserModel = oldUserModel.copyWith(
           id: oldUserModel.id,
           email: oldUserModel.email,
