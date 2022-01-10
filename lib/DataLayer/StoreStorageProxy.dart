@@ -2,6 +2,8 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:project_demo/DataLayer/user_authenticator.dart';
+import 'package:project_demo/models/UserModel.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:project_demo/DTOs/ProductDTO.dart';
 import 'package:project_demo/DTOs/StroreDTO.dart';
@@ -38,9 +40,32 @@ class StoreStorageProxy {
     StoreOwnerModel storeOwner = await UsersStorageProxy().getStoreOwnerState();
     if (storeOwner == null) {
       //the user will now have a store owner state
-      storeOwner = StoreOwnerModel(onlineStoreModel: onlineStoreModel);
+      storeOwner = StoreOwnerModel(
+          onlineStoreModel: onlineStoreModel,
+          storeOwnerModelOnlineStoreModelId: onlineStoreModel.id);
+      List<UserModel> userModels = await Amplify.DataStore.query(
+          UserModel.classType,
+          where: UserModel.ID.eq(UserAuthenticator().getCurrentUserId()));
+      if (userModels.isEmpty) {
+        return new Failure("no such user exists in the system!", null);
+      }
+      UserModel oldUserModel = userModels.first;
+      UserModel newUserModel = oldUserModel.copyWith(
+          id: oldUserModel.id,
+          email: oldUserModel.email,
+          name: oldUserModel.name,
+          imageUrl: oldUserModel.imageUrl,
+          creditCards: oldUserModel.creditCards,
+          bankAccount: oldUserModel.bankAccount,
+          shoppingBagModel: oldUserModel.shoppingBagModel,
+          storeOwnerModel: storeOwner,
+          digitalWalletModel: oldUserModel.digitalWalletModel,
+          userModelDigitalWalletModelId:
+              oldUserModel.userModelDigitalWalletModelId,
+          userModelStoreOwnerModelId: storeOwner.id);
       await Amplify.DataStore.save(onlineStoreModel);
       await Amplify.DataStore.save(storeOwner);
+      await Amplify.DataStore.save(newUserModel);
     } else if (!storeOwner.storeOwnerModelOnlineStoreModelId
         .isEmpty) // already have an online store
     {
@@ -85,8 +110,29 @@ class StoreStorageProxy {
       storeOwner = StoreOwnerModel(
           physicalStoreModel: physicalModel,
           storeOwnerModelPhysicalStoreModelId: physicalModel.id);
+      List<UserModel> userModels = await Amplify.DataStore.query(
+          UserModel.classType,
+          where: UserModel.ID.eq(UserAuthenticator().getCurrentUserId()));
+      if (userModels.isEmpty) {
+        return new Failure("no such user exists in the system!", null);
+      }
+      UserModel oldUserModel = userModels.first;
+      UserModel newUserModel = oldUserModel.copyWith(
+          id: oldUserModel.id,
+          email: oldUserModel.email,
+          name: oldUserModel.name,
+          imageUrl: oldUserModel.imageUrl,
+          creditCards: oldUserModel.creditCards,
+          bankAccount: oldUserModel.bankAccount,
+          shoppingBagModel: oldUserModel.shoppingBagModel,
+          storeOwnerModel: storeOwner,
+          digitalWalletModel: oldUserModel.digitalWalletModel,
+          userModelDigitalWalletModelId:
+              oldUserModel.userModelDigitalWalletModelId,
+          userModelStoreOwnerModelId: storeOwner.id);
       await Amplify.DataStore.save(physicalModel);
       await Amplify.DataStore.save(storeOwner);
+      await Amplify.DataStore.save(newUserModel);
     } else if (!storeOwner.storeOwnerModelPhysicalStoreModelId
         .isEmpty) // already have an physical store
     {
