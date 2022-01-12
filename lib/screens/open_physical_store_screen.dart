@@ -298,7 +298,7 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
                                         operationHours:
                                             _editedStore.operationHours,
                                         qrCode: _editedStore.qrCode,
-                                        image: value); //TODO: use value
+                                        image: value);
                                   },
                                 ),
                               ),
