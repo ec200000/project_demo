@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:project_demo/LogicLayer/Categories.dart';
 import 'package:project_demo/providers/physical_store.dart';
@@ -23,7 +24,7 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
   final _imageUrlController = TextEditingController();
   final _imageUrlFocusNode = FocusNode();
   final _form = GlobalKey<FormState>();
-  File _pickedImage;
+  XFile _pickedImage;
   var _editedStore = PhysicalStore(
       name: "",
       phoneNumber: "",
@@ -89,7 +90,7 @@ class _OpenPhysicalStoreScreenState extends State<OpenPhysicalStoreScreen> {
     }
   }
 
-  void _selectImage(File pickedImage) {
+  void _selectImage(XFile pickedImage) {
     _pickedImage = pickedImage;
     setState(() {});
   }
