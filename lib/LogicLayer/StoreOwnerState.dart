@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:project_demo/models/OnlineStoreModel.dart';
 import 'package:project_demo/models/PhysicalStoreModel.dart';
 import 'package:project_demo/providers/online_store.dart';
@@ -23,7 +24,7 @@ class StoreOwnerState {
         onlineStoreModel.phoneNumber,
         onlineStoreModel.address,
         List<String>.from(categories),
-        Map<int, DateTime>.from(operationHours));
+        Map<String, List<TimeOfDay>>.from(operationHours));
   }
 
   void setPhysicalStore(PhysicalStoreModel physicalStoreModel) {
@@ -34,7 +35,7 @@ class StoreOwnerState {
         phoneNumber: physicalStoreModel.phoneNumber,
         address: physicalStoreModel.address,
         categories: List<String>.from(categories),
-        operationHours: Map<int, DateTime>.from(operationHours),
+        operationHours: Map<String, List<TimeOfDay>>.from(operationHours),
         qrCode: physicalStoreModel.qrCode);
   }
 }

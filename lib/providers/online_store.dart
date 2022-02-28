@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:project_demo/LogicLayer/Categories.dart';
 
 class OnlineStore with ChangeNotifier{
@@ -9,7 +10,7 @@ class OnlineStore with ChangeNotifier{
   String phoneNumber;
   String address;
   List<String> categories;
-  Map<int, DateTime> operationHours;
+  Map<String, List<TimeOfDay>> operationHours;
 
   OnlineStore(
       @required this.name,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_demo/DataLayer/user_authenticator.dart';
 import '../screens/tabs_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -38,6 +39,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pop();
               Navigator.of(context).pushReplacementNamed('/');
               Provider.of<Auth>(context, listen: false).logout();
+              UserAuthenticator().signOut();
             },
           ),
         ],

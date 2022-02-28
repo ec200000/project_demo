@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:project_demo/LogicLayer/Categories.dart';
 
 class StoreDTO {
@@ -5,7 +6,7 @@ class StoreDTO {
   String phoneNumber;
   String address;
   List<String> categories;
-  Map<int, DateTime> operationHours;
+  Map<String, List<TimeOfDay>> operationHours;
 
   StoreDTO(this.name, this.phoneNumber, this.address, this.categories,
       this.operationHours);
